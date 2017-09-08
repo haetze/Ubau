@@ -1,0 +1,1349 @@
+#+TITLE: Zusammenfassung "Ubau
+#+LATEX_HEADER: \usepackage{ngerman}
+#+LATEX_HEADER: \usepackage{amssymb}
+#+LATEX_HEADER: \usepackage{amsmath}
+#+LATEX_HEADER: \usepackage{tikz-qtree}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usetikzlibrary{matrix}
+
+
+
+
+
+* Weg zum generischen Compiler
+
+- kontextfreie Sprache \rightarrow Parser \rightarrow Termalgebra \rightarrow generische Faltung \rightarrow Algebra
+
+* Algebraische Modellierung
+
+** Grundlagen
+
+Seien A, B Mengen, f: A \to B, C \subseteq A, D \subseteq B, n > 0.
+
+- \emptyset: leere Menge
+- 1: {\epsilon}
+- 2: {0,1}
+- [n]: {1,..,n}
+- \Delta^{n}_{A} =_def {(a_1,..,a_n) \in A^n | \forall 1 \leq i < n: a_i = a_{i+1} }
+- f(C) =_def {f(a) | a \in C} = P(f)(C) 
+- img(f) =_def f(A)
+- f^{-1}(D) =_def {a \in A | f(a) \in D}
+- ker(f) =_def {(a,a') \in A \times A | f(a) = f(a')}
+- graph(f) =_def {(a, f(a)) \in A \times B | a \in A}
+- f|_C: C \to B = c \to f(c)
+- f[b/a]: A \to B = c \to if c = a then b else f(c)
+- \chi: P(A) \to 2^A = C \to \lambda a. if a \in C then 1 else 0
+- f ist surjektiv \Leftrightarrow_def img(f) = B
+- f ist injektiv \Leftrightarrow_def ker(f) = \Delta^{2}_{A}
+- f ist bijektiv \Leftrightarrow_def \exists g: B \to A: g . f = id_A \and f . g = id_B
+- A \cong B \Leftrightarrow_def \exists f: A \to B und f ist bijektiv
+
+** Mehrsortige Mengen
+
+- Sei S eine Menge. Ein Tuple A = (A_s)_{s\[ \in \]S} ist dann eine S-indizierte(sortige) Menge.
+- Seien A = (A_s)_{s\[ \in \]S} und B = (B_s)_{s\[ \in\]S} S-sortige Mengen. f: A \to B ist eine S-sortige Menge (f_s)_{s\[ \in \]S}, so dass \forall s \in S. f_s:A_s \to B_s.
+- Seien n > 0. Eine n-stellige S-sortige Relation auf A ist eine S-sortige Menge R = (R_s)_{s\[ \in \]S} mit R_s \subseteq A_{s}^{n} f"ur alle  s\in S. 
+- Im Fall n = 1, hei"st R S-sortige Teilmenge von A genannt.
+- kartesisches Produkt einer I-sortigen Menge: \times_{i\[ \in \]I}A_i = {f:I \to \cup_{i\[ \in\]I}A_i | \forall i\in I : f(i) \in A_i}
+- Gibt es eine Menge A mit A_i = A f"ur alle i\in I, dann stimmt \times_{i\[ \in \]I}A_i offenbar mit A^I "uberein. Im Fall I = [n] f"ur ein n > 1 schreibt man auch A_1 \times ... \times A_n anstelle von \times_{i\[ \in \]I} A_i und A^n snatelle von A^I.
+- disjunkte Vereinigung: \uplus_{i\[ \in \]I}A_i = \cup_{i\[ \in \]I}(A_i \times {i})
+- Im Fall I = [n] f"ur ein n > 1 schreibt man auch A_1 + .. + A_n anstelle von \uplus_{i\[ \in \]I}A_i.
+- A^{+} =_def \cup_{n>0}A^n
+- 1 =_def {\epsilon}
+- A^{*} =_def 1 \cup A^{+}
+- \cdot: A^{*} \times A^{*} \to A^{*} und \cdot: P(A^{*}) \times P(A^{*}) \to P(A^{*}) ist die Konkatenationen von Strings
+
+** Produkte und Summen als universelle Konstruktionen
+   
+Sei I eine nichtleere Menge und A eine I-sortige Menge.
+Das kartesische Produkt und die disjunkte Vereinigung eines Mengentupels A haben bestimmte *universelle Eigenschaften*.
+- Jede Menge mit den universellen Eigenschaften des kartesischen Produkts nennt man /Produkt von A/
+- Jede Menge mit den universellen Eigenschaften der disjunkten Vereinigung nennt man /Summe von A/
+
+*** Produkt
+Sei A = (A_i)_{i\[ \in \]I} ein Mengentuple, P eine Menge und \pi = (\pi_i: P \to A_i)_{i\[ \in \]I} ein Funktionstuple.
+Das Paar (P, \pi) hei"st *Produkt von A*, wenn es f"ur alle Tuple (f_i: B \to A_i)_{i\[ \in \]I} genau eine Funktion f: B \to P gibt derart,
+dass f"ur alle i\in I Folgendes gilt:
+
+#+BEGIN_CENTER
+			\pi_i . f = f_i				   
+#+END_CENTER 
+
+\pi_i hei"st i-te Projektion von P und g Produktextension oder Range-Tuple von f. g wird mit \langle f_i \rangle_{i\[ \in \]I} und im Falle
+von I = [n], n > 1, auch mit \langle f_1,..,f_n \rangle bezeichnet.
+
+Demnach gilt:
+
+#+BEGIN_CENTER
+(\forall i\in I : \pi_i . f = \pi_i \bigcirc g) \Rightarrow f = g
+
+#+END_CENTER
+
+\times_{i\[ \in \]I}A_i ist ein Produkt von A.
+
+Die Projektion und Produktextensionen f"ur \times_{i\[ \in \]I}A_i sind wie folgt definiert:
+- F"ur alle i\in I und f\in \times_{i\[ \in \]I}A_i, \pi_i(f) =_def f(i)
+- F"ur alle (f_i: B \to A_i)_{i\[ \in \]I}, b\in B und i \in I, \langle f_i \rangle_{i\[ \in \]I}(b)(i) =_def f_i(b).
+
+**** Satz 2.2 Produkte sind /bis auf Isomorphie/ eindeutig:
+- Seien (P, \pi) und (P', \pi') Produkte von A. Dann sind P und P' isomorph.
+- Seien (P, \pi) ein Produkt von A, P' eine Menge und h: P' \to P eine bijektive Abbildung. Dann ist (P', \pi') mit \pi' = (\pi . h)_{i\[ \in \]I} ebenfalls ein Produkt von A.
+
+
+Die Funktion 
+#+BEGIN_CENTER
+\Pi_{i\[ \in \]I}f_i =_def \langle f_i . \pi_i \rangle : P \to P'  
+#+END_CENTER
+hei"st *Produkt von f*.
+
+F"ur alle nichtleeren Mengen I,f: A \to B und n > 0,
+
+#+BEGIN_CENTER
+f^I =_def \Pi_{i\[ \in \]I} f_i,  \\
+f_1 \times .. \times f_n =_def \Pi_{i\[ \in \][n]} f_i.
+#+END_CENTER
+
+F"ur alle f: A \to B, (f_i: B \to B_i)_{i\[ \in \]I}, (g_i: A_i \to B_i)_{i\[ \in \]I}, k\in I und (h_i: B_i \to A_i)_{i\[ \in \]I},
+#+BEGIN_CENTER
+\langle f_i \rangle_{i\[ \in \]I} . f = \langle f_i . f \rangle_{i\[ \in \]I}, \\
+\pi_k . \Pi_{i\[ \in \]I}g_i = g_k \pi_k, \\
+(\Pi_{i\[ \in \]I}h_i) . \langle f_i \rangle_{i\[ \in \]I} = \langle h_i . f_i \rangle_{i\[ \in \]I}. \\
+#+END_CENTER
+
+*** Summe 
+
+Vom Produkt kommt man zur Summe, indem man alle Funktionspfeile umdreht:
+Sei A = (A_i)_{i\[ \in \]I} ein Mengentuple, S eine Menge und \iota = (\iota_i: A_i \to S)_{i\[ \in \]I} ein Funktionstuple.
+Das Paar (S, \iota) hei"st *Summe* oder *Coprodukt von A*, wenn es f"ur alle Tuple (f_i: A_i \to B)_{i\[ \in \]I} _genau_ eine Funktion
+f: S \to B gibt mit 
+#+BEGIN_CENTER
+f . \iota_i = f_i
+#+END_CENTER
+f"ur alle i \in I. \\ 
+
+\iota_i hei"st i-te Injektion von S und g Summenextension oder Domain Tuplung von f. g wird mit [f_i]_{i\[ \in \]I} und im Falle I = [n],
+n>1, auch mit [f_1,..,f_n] bezeichnet. 
+
+Demnach gilt:
+
+
+#+BEGIN_CENTER
+(\forall i\in I : f . \iota_i = g . \iota_i) \Rightarrow f = g
+#+END_CENTER
+
+**** Satz 2.3 Summen sind /bis auf Isomorphie/ eindeutig:
+- Seien (S, \iota) und (S', \iota') Summen von A. Dann sind P und P' isomorph.
+- Sei (S, \iota) eine Summe von A, S' eine Menge und h: S \to S' eine bijektive Abbildung. Dann ist (S', \iota') mit \iota' = (h . \iota_i)_{i\[ \in \]I} ebenfalls eine summe von A.
+
+Sei (S, \iota) eine Summe von (A_i)_{i\[ \in \]I}, ein (S', \iota') eine Summe von (B_i)_{i\[ \in \]I} und f = (f_i: A_i \to B_i)_{i\[ \in \]I}
+Die Funktion
+#+BEGIN_CENTER
+\amalg_{i\[ \in \]I}f_i =_def [\iota_{i}' . f_{i}]: S \to S' 
+#+END_CENTER
+hei"st Summe von f.
+
+
+F"ur alle nichtleeren Mengen I,f: A \to B und n>0,
+#+BEGIN_CENTER
+f \times I =_def \amalg_{i\[ \in \]I} f, \\
+f_1+..+f_n =_def \amalg_{i\[ \in \][n]} f_i, \\
+f^{+} =_def \amalg_{n\[ \in \]\mathbb{N}} f^{[n]}, \\
+f^{*} =_def 1 + f^{+} =_def id_1 + f^{+}. \\
+#+END_CENTER
+
+** Typen und Signaturen
+
+Sei S eine Menge von - *Sorten* genannten - Symbolen.
+Die Klasse T_p(S) der *polynomialen Typen "uber* S:
+- S \subseteq T_p(S)
+- Jede nichtleere Menge ist ein polynomialer Typ
+- F"ur alle nichtleeren Mengen I und (e_i)_{i\in I}\in T_p(S)^I, \Pi_{i\in I} e_i, \amalg_{i\in I}e_i \in T_p(S) 
+
+
+- Ein Typ der Form \Pi_{i\in I}e_i hei"st *I-stelliger Produkttyp* mit den *Faktoren* e_i, i\in I.
+- Ein Typ der Form \amalg_{i\in I}e_i hei"st *I-stelliger Summentyp* mit den *Summanden* e_i, i\in I.
+
+F"ur alle n>0, e_1,..,e_n, e\in T_p(S) und nichtleere Mengen I,
+#+BEGIN_CENTER
+e_1 \times .. \times e_n =_def \Pi_{i\[ \in \][n]}e_i, \\
+e_1 + .. + e_n =_def \amalg_{i\[ \in \][n]}e_i, \\
+e^I =_def \Pi_{i\[ \in \]I}e_i, \\
+e^n =_def e^[n], \\
+e^{+} =_def \amalg_{n>0}e^n, \\
+e^{*} =_def 1 + e^{+}. \\
+#+END_CENTER
+
+Eine S-sortige Menge A wird wie folgt zur T_p(S)-sortigen Menge erweitert: F"ur alle nichtleeren Mengen I und (e_i)_{i\[ \in \]I}
+
+#+BEGIN_CENTER
+A_I = I, \\
+A_{\Pi_{i\[ \in \]I}e_i} = \times_{i\[ \in \]I} A_{e_i}, \\
+A_{\amalg_{i\[ \in \]I}e_i} = \uplus_{i\[ \in \]I} A_{e_i}.
+#+END_CENTER
+
+F"ur alle e \in T_p(S) und a \in A_e nennen wir e den Typen von a.
+
+Eine S-sortige Funktion h: A \to B wird wie folgt zur T_p(S)-sortigen Menge f"ur alle nichtleeren Mengen I und (e_i)_{i \[ \in \]} 
+\in T_p(S)^I.
+
+#+BEGIN_CENTER
+h_I = id_I, \\
+h_{\Pi_{i \[ \in \]I}} = \Pi_{i\[ \in \]I}h_{e_i}, \\
+h_{\amalg_{i \[ \in \]I}} = \amalg_{i\[ \in \]I}h_{e_i}.
+#+END_CENTER
+
+
+F"ur alle S-sortigen Mengen A, S-sortige Funktionen h: A \to B, n>0, nichtleeren Menge I und e_1,..e_n, e \in T_p(S) gilt Folgendes:
+#+BEGIN_CENTER
+A_{e_1 \times .. \times e_n} = A_{e_1} \times .. \times A_{e_n}, \\
+A_{e_1 + .. + e_n} = A_{e_1} + .. + A_{e_n}, \\
+A_{e^I} = A^I_e, \\
+A_{e^n} = A^n_e, \\
+A_{e^{+}} = A^{+}_e, \\
+A_{e^{*}} = A^{*}_e, \\
+
+h_{e_1 \times .. \times e_n} = h_{e_1} \times .. \times h_{e_n}, \\
+h_{e_1 + .. + e_n} = h_{e_1} + .. + h_{e_n}, \\
+h_{e^I} = h^I_e, \\
+h_{e^n} = h^{[n]}_e, \\
+h_{e^{+}} = h^{+}_e, \\
+h_{e^{*}} = h^{*}_e.
+#+END_CENTER
+
+
+
+** Signaturen
+
+- Eine *Signatur* \Sigma = (S, F) besteht aus einer Menge S von Sorten wie oben sowie einer Menge F typisierter Funktionssymbole f: e \to e' mit e, e' \in T_p(S), den Operationen von \Sigma.
+- obs(\Sigma): die Menge der *beobachtbaren Typen* (observable types) von \Sigma, das sind alle nichtleeren Mengenm die in Typen von Operationen von \Sigma vorkommen.
+- \forall f\in F : f: e \to e', dom(f) = e und ran(f) = e'
+- \Sigma hei"st *Gentzen-Signatur*, falls \forall f \in F Mengen I, J existieren sodass dom(f) ein I-stelliger Produkttyp und ran(f) ein J-stelliger Summentyp ist.
+- Konsrtuktoren dienen der Synthese von Elementen einer S-sortigen Menge, Destruktoren liefern Werkzeuge zu ihrer Analyse.
+- Abstrakte Syntax einer CFG ist eine konstruktive Signaturen
+- Parser, Interpreter und Compiler beruhen auf Automatenmodelle, die destruktive Signaturen interpretieren
+
+*** Konstruktive Signaturen
+
+**** Mon (\Rightarrow Unmarkierte bin"are B"aume) 
+- S = {mon}
+- F = {one: 1 \to mon, mul: mon \times mon \to mon}
+
+**** Nat (\Rightarrow N)
+- S = {nat}
+- F = {zero: 1 \to nat, succ: nat \to nat}
+
+**** Dyn(I, X) (\Rightarrow I \times X^{*})
+- S = {list}
+- F = {nil: I \to list. cons: X \times list \to list}
+
+**** List(X) =_def Dyn(1, X) (\Rightarrow X^{*})
+
+**** Bintree(X) (\Rightarrow bin"are B"aume endlicher Tiefe mit Knotenmarkierungen aus X)
+- S = {btree}
+- F = {empty: 1 \to btree, bjoin: btree \times X \times btree \to btree}
+
+
+**** Tree(X) (\Rightarrow B"aume endlicher Tiefe und endlichen Knotenausgrads mit Knotenmarkierungen aus X)
+- S = {tree, trees}
+- F = {join: X \times trees \to tree, nil: 1 \to trees, cons: tree \times trees \to trees}
+
+**** Reg(BL) (\Rightarrow regul"are Ausdr"ucke "uber BL)
+- S = {reg}
+- F = {par: reg \times reg \to reg, seq: reg \times reg \to reg, iter: reg \to reg, base: BL \to reg}
+
+**** CCS(Act) (\Rightarrow Calculus of Communicating Systems)
+- S = {proc}
+- F = { pre: Act \times proc \to proc, cho: proc \times proc \to proc, par: proc \times proc \to proc, res: proc \times Act \to proc, rel: proc \times Act^{Act} \to proc}
+
+
+*** Destruktive Signaturen
+
+**** coNat (\Rightarrow N \cup {\infty})
+- S = {nat}
+- F = {pred: nat \to 1 + nat}
+
+**** coList(X) (\Rightarrow X^{*} \cup X^{N} (coList(1) \cong coNat))
+- S = {list, X \times list}
+- F = {split: list \to 1+ X \times list, \pi_1: X \times list \to X, \pi_2: X \times list \to list}
+
+**** Stream(X) =_def DAut(1, X) (\Rightarrow X^{N})
+- S = {list}
+- F = {head: list \to X, tail: list \to list}
+
+**** coBintree(X) (\Rightarrow bin"are B"aume beliebiger Tiefe mit Knotenmarkierungen aus X)
+- S = {btree, btree \times X \times btree}
+- F = {split: btree \to 1 + btree \times X \times btree, \pi_1: btree \times X \times btree \to btree, \pi_2: btree \times X \times btree \to X, \pi_3: btree \times X \times btree \to btree}
+
+**** Infbintree(X) (\Rightarrow bin"are B"aume unendlicher Tiefe mit Knotenmarkierungen aus X)
+- S = {btree}
+- F = {root: btree \to X, left, right:btree \to btree}
+
+**** DAut(X,Y) (\Rightarrow Y^{X^{*}} = Verhalten det. Moore-Automaten mit Eingabemenge X und Ausgabemenge Y)
+- S = {state, state^X}
+- F = {\delta: state \to state^X, \beta: state \to Y} \cup {\pi_x: state^X \to state | x\in X}
+
+**** Acc(X) =_def DAut(X,2) (\Rightarrow P(X^{*}) = Wortsprache "uber X)
+
+**** Proctree(Act) (\Rightarrow Prozessb"aume, deren Kanten mit Aktionen markiert sind)
+- S = {tree} \cup {(Act \times tree)^n | n > 0}
+- F = {\delta: tree \to (Act \times tree)^{*}} \cup {\pi_n: (Act \times tree)^n \to Act \times tree | n > 0} \cup {\pi_1: Act \times tree \to Act, \pi_2: Act \times tree \to tree}
+
+** Algebren
+
+Sei \Sigma = (S, F) eine Signatur. Eine \Sigma- *Algebra* A = (A, Op) besteht aus einer S-sortigen Menge A und einer F-sortigen Menge
+#+BEGIN_CENTER
+Op = (f^A: A_e \to A_{e'})_{f: e\[ \to \]e'\[ \in \]F}
+#+END_CENTER 
+von Funktionen, den Operationen von A.
+F"ur alle s \in S hei"st A_s Tr"agermenge (carrier set) oder Interpretation von s in A. F"ur alle f: e \to e' \in F hei"st f^A : A_e \to A_{e'} Interpreation von f in A.
+
+Seien A, B \Sigma-Algebren. Eine S-sortige Funktion h: A \to B hei"st \Sigma-Homomorphismus, wenn f"ur alle f: e \to e' \in F
+#+BEGIN_CENTER
+h_{e'} \bigcirc f^A = f^B \bigcirc h_e
+#+END_CENTER
+gilt. Ist h bijektiv, dann hei"st h \Sigma-Isomorphismus und A und B sind \Sigma-isomorph. h induziert die Bildalgebra h(A):
+- F"ur alle e\in T_p(S), h(A)_e =_def h_e(A_e)
+- F"ur alle f: e\to e' \in F und a \in A_e, f^{h(A)}(h(a)) =_def f^B(h(a))
+
+*** Beispiele
+
+**** Nat-Algebra
+- zero^N: 1 \to N, succ^N: N \to N
+- zreo^N(\epsilon) = 0, succ^N(n) = n + 1
+
+**** Word(X) (eine Mon-Algebra)
+- one^{Word(X)}: 1 \to X^{*}, mul^{Word(X)}: X^{*} \times X^{*} \to X^{*}
+- one^{Word(X)}(\epsilon) = \epsilon, mult^{Word(X)}(u, v) = uv 
+
+
+** Terme und Coterme
+*** Terme 
+Sei \Sigma = (S,C) eine konstruktive Signatur, X = \cup obs(\Sigma) und V eine S-sortige Menge von "Variablen".
+Die Menge CT_\Sigma(V) der \Sigma-Terme "uber V ist die gr"o"ste (S \cup obs(\Sigma))-sortige Menge M  det. B"aume "uber (X, C \cup X \cup V)
+mit folgenden Eigenschaften:
+
+- F"ur alle B \in obs(\Sigma), M_B = B (1)
+- F"ur alle s \in S und t \in M_s ist t \in V_s (2) oder gibt es c: \Pi_{i\[ \in \]I}s_i \to s \in C und (t_i)_{i\[ \in \]I} \in \times_{i\[ \in \]I}M_{s_i} mit t = c{i \to t_i | i \in I} (3)
+
+
+
+
+**** Fall 
+\\ 
+\Tree [.b ] \\
+b \in B, 
+B \in obs(\Sigma) \\
+
+**** Fall
+\\
+\Tree [.x ] \\
+x ist von s, s \in S, x \in V_s 
+
+**** Fall
+\\
+\Tree [.c \ldots \\
+          \ldots \\
+	  \ldots \\
+	  [.i s_i ]
+	  \ldots \\ ]
+
+c: \Pi_{i\[ \in \]I} s_i \to s \in C
+
+
+- Die Elemente von CT_\Sigma =_def CT_\Sigma(\lambda x. \emptyset) hei"sen \Sigma-Grundterme.
+
+*** Coterme 
+Sei \Sigma = (S, D) eine destruktive Signatur und V eine S-sortige Menge von Farbe oder Covariablen.
+
+Die Menge DT_\Sigma(V) der \Sigma-Coterme "uber V ist die gr"o"ste Menge (S \cup obs(\Sigma))-sortige Menge M det. B"aume "uber (D \cup {!}, X \cup V) mit (1) und folgender Eigenschaft
+- F"ur alle s \in S, t \in M_s, d: s \to \amalg_{i\[ \in \]I}s_i \in D gibt es x \in V_s, i_d \in I und t_d \in M_{s_i} mit t =x{d \to i{! \to t_d} | d: s \to e \in D}
+
+**** Fall
+\\ 
+\Tree [.b ] \\
+b \in B, 
+B \in obs(\Sigma) \\
+
+**** Fall
+\\
+\Tree [.x \ldots \\
+          \ldots \\
+	  \ldots \\
+	  [.i s_i ]
+	  \ldots \\ ]
+
+x \in V_s
+c: s \to \amalg_{i\[ \in \]I} s_i  \in D
+
+Ist I einelementig, dann stimmt \amalg_{i\[ \in \]I}s_i mit s_i "uberein, so dass die mit ! markierte Kante entf"allt.
+
+** /Bool/-Algebra 
+Die Menge 2 ist Tr"agermenge der REG(BL)-Algebra /Bool/.
+
+F"ur alle x, y \in 2 und B \in BL \ 1:
+#+BEGIN_CENTER
+par^{Bool}(x, y) = max{x,y}, \\
+seq^{Bool}(x, y) = x*y, \\
+iter^{Bool}(x) = 1, \\
+base^{Bool}(1) = 1, \\
+bas^{Bool}(B) = 0. \\
+#+END_CENTER
+
+
+** Termfaltung
+- \Sigma = (S, C)
+- V eine S-sortige Menge 
+- A = (A, Op) eine \Sigma-Algebra
+- g: V \to A eine *Variablenbelegung* (/valuation/)
+- g^{*} intuitiv definiert.
+
+
+Offenbar h"angt die Einschr"ankung von g* auf Grundterme nicht von g ab. Sie wird *Termfaltung* genannt und mit fold^A bezeichnet.
+
+Folglich ist fold^A der einzige \Sigma-Homomorphismus von T_\Sigma nach A
+
+** Zustandsentfaltung
+- \Sigma = (S, D) 
+- V eine S-sortige Menge 
+- A = (A, Op) eine \Sigma-Algebra
+- g: A \to V eine F"arbung
+- g^{#} intuitiv definiert
+
+Offenbar h"angt die Einschr"ankung von g^{#} auf Grundterme nicht von g ab. Sie wird *Zustandsentfaltung* genannt und mit unfold^A bezeichnet.
+ 
+* Rechnen mit Algebren 
+
+** Unteralgebra
+Bez"uglich der Operationen geschlossene Untermenge.
+
+** Substitution 
+\sigma^{*}: T_\Sigma(V) \to T_\Sigma(V)
+
+** Term"aquivalenz 
+\forall t,t' \in E, g \in A^V : g^{*}(t) = g^{*}(t')
+
+
+** Normalformen 
+Werden f"ur jede Signatur selbst definiert und k"onnen durch das verwenden definierter Gleichungen erzeugt Werden
+
+* Kontextfreie Grammatiken (CFGs)
+
+** Definition 
+G = (S, BS, R) mit 
+
+- einer endlichen Menge S von *Sorten*, die auch Nichtterminale oder Variablen genannt werden 
+- BS, eine Menge nichtleerer Basismengen 
+- eine endliche Menge R von Regeln s \to w mit s \in S und \\ w \in (S \cup BS)^{*} \ {s} 
+
+** Die JavaLight Grammatik
+*** R
+- Commands \to Command Commands | Command 
+- Command \to {Commands} | String = Sum; | \\ if Disjunct Command else Command | \\ if Disjunct Command | while Disjunct Command
+- Sum \to Sum + Prod | Sum - Prod | Prod 
+- Prod \to Prod * Factor | Prod/Factor | Factor
+- Factor \to Z | String | (Sum)
+- Disjunct \to Conjunct || Disjunct | Conjunct
+- Conjunct \to Literal && Conjunct | Literal
+- Literal \to !Literal | Sum Rel Sum | 2 | (Disjunct)
+
+*** BS
+- String (alle Zeichenfolgen au"ser Elementen anderer Basismengen von JavaLight)
+- Z
+- Rel (nicht n"aher spezifizierter bin"arer Relationen auf Z
+
+** Beispiel Programm
+
+fact = 1; while x > 1 {fact = fact*x; x = x-1;}
+
+** Linksrekursive Grammatiken
+
+Sei G = (S, BS, R) und X = \cup BS. 
+
+X ist die Menge der Eingabesymbole, die Compiler f"ur G verarbeiten m"ussen.
+
+*** Einschub Ableitungsrelation
+\to_G = {(vsw, v\alpha w), s \to \alpha \in R, v,w \in (S \cup BS)^{*}}.
+
+
+*** Definition
+- G hei"st *linksrekursiv*, falls es eine *linkrekursive* Ableitung s \to_G sv gibt. 
+- G hei"st LL-kompilierbar, falls es eine partielle Ordnung \leq auf S gibt mit s' \leq s f"ur alle Ableitungen sv \to_G s'w
+**** Umgangssprachlich
+Man hat eine Regel, sodass die Sorte auf der linken Seite auf der rechten Seite ganz links vorkommt.
+
+*** Beispiel
+Z.B. REG ist LL-kompilierbar, JavaLight jedoch _nicht_. 
+
+*** Verfahren zur Elemenierung von Linksrekursion
+Sei G = (S, BS, R) und S = {s_1,..,s_n}.
+
+F"uhre f"ur alle 1 \leq i \leq n die beiden folgenden Schritte in der angegebenen Reihenfolge durch:
+
+- F"ur alle 1 \leq j \leq i und Regelpaare (s_i \to s_{j}v, s_j \to w) ersetze dir Regel s_i \to s_{j}v durch s_i \to wv
+- Falls vorhanden, streiche die Regel s_i \to s_i
+- F"ur alle Regelpaare (s_i \to v, s_i \to s_{i}w) mit \notin {s_i} \times (S \cup BS)^{*} ersetze die beiden Regeln durch die drei neuen Regeln s_i \to vs'_i, s'_i \to ws'_i und s'_i \to \epsilon
+
+
+**** Beispiel JavaLight
+
+- Commands \to Command Commands | Command 
+- Command \to {Commands} | String = Sum; | \\ if Disjunct Command else Command | \\ if Disjunct Command | while Disjunct Command
+- Sum \to Prod Sumsect
+- Sumsect \to + Prod Sumsect | - Prod Sumsect | \epsilon  
+- Prod \to Factor Prodsect
+- Prodsect \to * Factor Prodsect | / Factor Prodsect | \epsilon
+- Factor \to Z | String | (Sum)
+- Disjunct \to Conjunct || Disjunct | Conjunct
+- Conjunct \to Literal && Conjunct | Literal
+- Literal \to !Literal | Sum Rel Sum | 2 | (Disjunct)
+
+
+
+** Abstrakte Syntax 
+
+Sei G = (S, BS, R) eine CFG.
+
+Die folgende Funktion typ: (S \cup BS)^{*} \to T_p(S) streicht alle Elemente von Z(G) aus W"ortern "uber S \cup BS und "uberf"uhrt diese
+in die durch sie bezeichneten Produkttypen:
+
+- typ(\epsilon) = 1
+- F"ur alle s \in S \cup BS \ Z(G) und w \in (S \cup BS)^{*}, typ(sw) = s \times typ(w)
+- F"ur alle x \in Z und w \in (S \cup BS)^{*}, typ(xw) = typ(w)
+
+Dann ist \Sigma(G) = (S, BS, {f_{s \to w}:typ(w) \to s | s \to w \in R})
+
+
+\Sigma(G)-Grundterme werden Syntaxb"aume von G genannt.
+
+*** Beispiel JavaLight
+- S = {Commands, Command, Sum, Prod, Factor, Disjunct, Conjunct, Literal}
+- \Iota = {Z, String, Rel, 2}
+- F = { \\ seq: Command \times Commands \to Commands, \\ embed: Command \to Commands, \\ block: Commands \to Command, \\ assign: String \times Sum \to Command, \\ cond: Disjunct \times Command \times Command \to Command, \\ cond1, loop: Disjunct \times Command \to Command, \\ _sum_: Prod \to Sum, \\ _plus_, _minus_: Sum \times Prod \to Sum, \\ _prod_: Factor \to Prod, \\ _times_, _div_: Prod \times Factor \to Prod, \\ embedI: Z \to Factor, \\ var: String \to Factor, \\ encloseS: Sum \to Factor, \\ disjunct: Conjunct \times Disjunct \to Disjunct, \\ embedC: Conjunct \to Disjunct, \\ conjunct: Literal \times Conjunct \to Conjunct, \\ embedL: Literal \to Conjunct, \\ not: Literal \to Literal, \\ atom: Rel \times Sum \times Sum \to Literal, \\ embedB: 2 \to Literal, \\ encloseD: Disjunct \to Literal}
+
+
+*** JavaLight' (entlinksrekursiv)
+- wird um die Sorten Sumsect und Prodsect erweitert und um die Konstruktoren 
+- sum: Prod \times Sumsect \to Sum, \\ plus, minus: Prod \times Sumsect \to Sumsect, \\ nilS: 1 \to Sumsect, \\ prod: Factor \times Prodsect \to Prod, \\ times, div: Factor \times Prodsect \to Prodsect, \\ nilP: 1 \to Prodsect
+
+*** Syntaxbaum Beispiel
+Beispiel Programm:
+- fact = 1; while x > 1 {fact = fact*x; x = x-1;}
+
+\begin{tikzpicture}[grow'=right, level distance=0.6in]
+\Tree [.Seq 
+            [.Assign fact 
+	                  [.Sum 
+			        [.Prod 
+				       [.EmbedI 1 ] 
+				       NilP ]
+				NilS ]]
+	    [.Embed 
+	            [.Loop
+		           [.EmbedC 
+			            [.EmbedL 
+				             [.Atom > 
+			                            [.Sum 
+						          [.Prod 
+							         [.Var x ]
+								 [.NilP ]]
+							  [.NilS ]]
+						    [.Sum 
+						          [.Prod 
+							         [.EmbedI 1 ]
+								 [.NilP ]]
+							  [.NilS ]]]]]
+		    [.Block 
+		            [.Seq 
+		                  [.Assign
+				           fact 
+					   [.Sum 
+					         [.Prod 
+						        [.Var fact ]
+							[.Times 
+							        [.Var x ]
+								[.NilP ]]]
+						 [.NilS ]]]
+				  [.Embed 
+				          [.Assign
+					           x
+						   [.Sum 
+						         [.Prod
+							        [.Var x ]
+								[.NilP ]]
+							 [.Minus 
+							         [.Prod
+								        [.EmbedI 1 ]
+									[.NilP ]]
+								 [.NilS ]]]]]]]]]]
+\end{tikzpicture}
+
+** Definition derec(G)
+
+- F"ur alle s \in S \cup BS \ Z(G), derec(G)_s = T_{\Sigma(G'),s}
+- F"ur alle s \in S \ recs(S) und s \to v \in R und t \in T_{\Sigma(G'),typ(v)}, f_{s \to v}^{derec(G)}(t) = f_{s \to v}(t)
+- F"ur alle s \to v \in nonrecs(R), s \to sw \in R, t \in T_{\Sigma(G'),typ(v)}, t' \in T_{\Sigma(G'),s'} und u \in T_{\Sigma(G'), typ(w)} \\ f_{s \to v}^{derec(G)}(t) = f_{s \to vs'}(t, f_{s' \to \epsilon}) \\ f_{s \to sw}^{derec(G)}(f_{s \to vs'}(t,t'),u) = f_{s \to vs'}(t, f_{s' \to ws'}(u, t')) 
+
+Mit derec(G) kann man eine Syntaxbaum in G in einen Syntaxbaum der nicht linksrekursiven Grammatik G' umwandeln
+
+
+** Wort- und Ableitungsbaumalgebra
+Neben T_{\Sigma(g)} lassen sich auch die Menge der W"orter "uber X und die Menge der Ableitungsb"aume von G zu \Sigma(G)-Algebren erweitern.
+
+*** Wortalgebra
+fold^{Word(G)} bildet Terme auf die entsprechenden W"orter der Sprache. 
+
+*** Ableitungsbaumalgebra
+Bildet auf einen Baum ab, der auch die W"orter darstellt (inklusive der Terminale aus Z(G))
+
+** Zustandsmodell von JavaLight
+- Sei Store = String \to Z (Variablenbelegung)
+
+- Wir bilden eine \Sigma(JavaLight)-Algebra
+
+*** Sorten
+- A_Commands = A_Command = Store \to Store 
+- A_Sum = A_Factor = A_Prod = Store \to Z 
+- A_Disjunkt = A_Conjunct = A_Literal = Store \to 2
+
+*** Operationen
+F"ur alle f,g: Store \to Store, x \in Store, e: Store \in Z, st \in Store \\ und p: Store \to 2.
+
+#+BEGIN_CENTER
+seq^A(f, g) = g . f, \\
+embed^A(f) = block^A(f) = f, \\
+assign^A(x,e)(st) = st[e(st)/x], \\
+cond^A(p, f, g)(st) = if p(st) then f(st) else g(st), \\
+cond1^A(p, f)(st) = if p(st) then f(st) else st, \\
+loop^A(p, f)(st) = if p(st) then loop(p, f)(f(st)) else st. \\
+#+END_CENTER
+
+F"ur alle f,g: Store \to Z, x \in String und i \in Z
+
+#+BEGIN_CENTER
+sum^A(f) = prod^A(f) = f, \\
+plus^A(f, g) = list^Store(+)(f, g) = \lambda st. f(st) + g(st), \\
+minus^A(f, g) = list^Store(-)(f, g) = \lambda st. f(st) - g(st), \\
+times^A(f, g) = list^Store(*)(f, g) = \lambda st. f(st) * g(st), \\
+div^A(f, g) = list^Store(/)(f, g) = \lambda st. f(st) / g(st), \\
+embedI(i)(st) = i, \\
+var(x)(st) = st(x), \\
+encloseS^A(f) = f.
+#+END_CENTER
+
+F"ur alle f, g: Store \to 2, rel \in Rel, e, e': Store \to Z, b \in 2,
+
+#+BEGIN_CENTER
+disjunct^A(f, g) = lift^Store(\lor)(f,g) = \lambda st. f(st) \lor g(st), \\
+conjunct^A(f, g) = lift^Store(\land)(f,g) = \lambda st. f(st) \land g(st), \\
+atom^A(rel, e, e') = lift^Store(rel)(e,e') = \lambda st. e(st) rel e'(st), \\
+embedC^A(f) = embedL^A(f) = encloseD^A(f) = f, \\
+not^A(f) = \not . f, \\
+embedB^A(b)(st) = b.
+#+END_CENTER
+
+* Parser und Compiler f"ur CFGs
+
+<<diagram_1>>
+T_{\Sigma(G)} \xrightarrow{fold^Z} Z \xrightarrow{evaluate} Mach \\
+T_{\Sigma(G)} \xrightarrow{fold^S} S \xrightarrow{encode} Mach
+
+- S: Sem, die ebenfalls als \Sigma(G)-Algebra gegebene Semantik der Quellsprache L(G)
+- Mach, eine in der Regel unabh"angig von \Sigma(G) definiertes Modell der Zielsprache, meist in der Form einer abstrakten Maschine 
+- evaluate, ein Interpreter der die Zielsprache in der abstrakten Maschine Mach ausf"uhrt
+- encode, eine Funktion, die Sem auf Mach abbildet und die gew"unschte Arbeitsweise des Compilers auf der semantischen Ebene ausf"uhrt
+
+** Definition Parser
+
+Parser f"ur G: eine S-sortige Funktion
+#+BEGIN_CENTER
+parse_G: X^{*} \to M(T_{\Sigma(G)})
+#+END_CENTER
+die entweder einen Synatxbaum f"ur das Eingabewort erzeugt oder eine Fehlermeldung zur"uck gibt. (Syntaxbaum und Fehlermeldung sind abh"anig von der Monade M)
+
+** Funktoren und Monaden
+
+*** Definition Kategorie
+Eine Kategorie K besteht aus
+- einer - ebenfalls mit K bezeichneten- Klasse von K-Objekten 
+- f"ur alle A.B \in K einer Menge K(A,B) von K-Morphismen
+- einer assoziativen Komposition 
+#+BEGIN_CENTER 
+. : K(A,B) \times K(B, C) \to K(A,C) 
+\\ (f,g) \to g . f 
+#+END_CENTER 
+- einer Identit"at id_A \in K(A,A), die bez"uglich . neutral ist
+
+*** Defintion Funktor 
+Seien K und L Kategorien. Ein Funktor F: K \to L ist eine Funktion(m"ussen das wirklich Funktionen sein?), die jedem K-Objekt ein L-Objekt und jedem 
+K-Morphismus f: A \to B eine L-Morphismus F(f): F(A) \to F(B)  zuordnet, sowie folgende Gleichungen erf"ullt:
+- F"ur alle K-Objekte A, F(id_A) = id_{F(A)}
+- F"ur alle K-Morphismen f: A \to B und g: B \to C, F(g . f) = F(g) . F(f)
+- Funktoren lassen sich wie Funktionen zu neuen Funktoren komponieren. 
+
+**** Beispiele
+- Sei B \in L. Der konstante Funktor const(B): K \to L ordnet jedem K-Objekt B und jedem K-Morphismus die Identit"at auf B zu
+- Der Diagonalfunktor \Delta_K: K \to K^2 ordnet jedem K-Objekt A das Paar (A,A) und jedem K-Morphismus f das Paar (f,f) zu
+- Produktfunktor, _ \times _ : Set^2 \to Set ordnet jedem Mengenpaar (A,B) die Menge A \times B und jedem Funktionspaar (f: A \to B, g: C \to D) die Funktion f \times g =_def \lambda(a,c).(f(a),g(c)) zu
+- Ausnahmefunktor _ + E : Set \to Set ordnet jeder Menge A die Menge A + E zu und jeder Funktion f: A \to B die Funktion 
+#+BEGIN_CENTER
+f + E: A + E \to B + E \\
+(a, 1) \to (f(a), 1) \\
+(e, 2) \to (e, 2) \\
+#+END_CENTER
+
+*** Definition Nat"urliche Transformation 
+Seien F, G: K \to L Funktoren. Eine nat"urliche Transformation \tau: F \to G ordnet jedem K-Objekt A einen L-Morphismus \tau_A: F(A) 
+\to G(A) derart, dass f"ur alle K-Morphismen f:A \to B das gilt:
+
+- F(A) \to^{\tau_A} G(A)
+- F(A) \to^{F(f)} F(B)
+- F(B) \to^{\tau_B} G(B)
+- G(A) \to^{G(f)} G(B)
+
+*** Definition Monade 
+Ein Funktor M: K \to K hei"st Monade, wenn es zwei nat"urliche Transformationen \eta: Id_K \to M (Einheit) und \mu: M . M \to M 
+(Multiplikation) gibt, die f"ur alle A \in K folgednes gelten lassen:
+
+- Seite 154 Folienscript
+
+**** Beispiel Ausnahmefunktor
+
+- \eta_A: A \to A + E \\ \eta_A(a) = (a,1)
+- \mu_A: (A + E) + E \\ \mu_A( ((a,1),1) ) = (a,1) \\ \mu_A( ((e,2),1) ) = (e,2) \\ \mu_A( (e,2) ) = (e,2)
+
+**** Der bind-Operator
+Seien A und B Mengen
+
+#+BEGIN_CENTER
+>>=: M(A) \times (A \to M(B)) \to M(B) \\
+(>>= f) = \mu_B . M(f)
+#+END_CENTER
+
+**** Intuitive Erkl"arung einer Monade 
+
+Intuitiv stellt man sich ein monadisches Object m \in M(A) als Berechnung vor, die eine -evt leere- Menge von Werten in A erzeugt. 
+Ein Ausdruck der Form />>= f/ wird dann wie folgt ausgewertet: Die von m berechneten Werte a \in A werden als Eingabe an die Berechnung
+von f "ubergeben und von f(a) verarbeitet.
+
+**** Es ergeben sich ein paar Eigenschaften
+- m >>= \eta_A = m
+- \eta_A(a) >>= f = f(a)
+- (m >>= f) >>= g = m >>= \lambda a. f(a) >>= g
+- M(h)(m) = m >>= \mu_B . h
+- \eta_A(m') = m' >>= id_M(A)
+
+**** Plusmonade
+Plusmonaden haben zus"atzlich eine parallele *Komposition*
+#+BEGIN_CENTER
+\oplus: M \times M =_def _ \times _ . \Delta . M \to M
+#+END_CENTER
+
+*** Compilermonade
+Sei M: Set^S \to Set^S eine Monade mit der Einheit \eta, bind-Operator >>= und paralleler Komposition \oplus, set: M \to P eine 
+weitere nat"urliche Transformation und 
+#+BEGIN_CENTER
+E = {m \in M(A) | set_A(m) = \emptyset, A \in Set^S}
+#+END_CENTER
+"Menge der Ausnahmewerte" \\
+
+M hei"st Compilermonade, wenn f"ur alle Mengen A und B, m, m', m'' \in M(A), e \in E, f: A \to M(B), h: A \to B und a \in A Folgendes gilt:
+#+BEGIN_CENTER
+(m \oplus m') \oplus m'' = m \oplus (m' \oplus m'') \\
+M(h)(e) = e \\
+M(h)(m \oplus m') = M(h)(m) \oplus M(h)(m') \\
+set_A(m \oplus m') = set_A(m) \cup set_A(m') \\
+set_A(\eta_A(a)) = {a} \\
+set_B(m >>= f) = \cup{set_B(f(a)) | a \in set_A(m)}
+#+END_CENTER
+
+*** Monadenbasierte Parser und Compiler 
+
+- Sei G = (S, BS, R) LL-kompilierbar 
+- G' die daraus gebildete nicht-linksrekursive Grammatik 
+- X = \cup BS
+- \Sigma(G) = (S, F)
+- M : Set^S \to Set^S
+
+Ein Compiler f"ur G in die als \Sigma(G)-Algebra A formulierte Zielsprache einen Parser f"ur G mit der Faltung in A der vom Parser 
+erzeugten Syntaxbaume komponieren.
+Daher passen wir die "Ubersetzungsfunktion ein bisschen an:
+
+<<compile_funktion>>
+#+BEGIN_CENTER
+compile_G^A = X^{*} \to^{compile_G^{T_{\Sigma(G)}}} M(T_{\Sigma(G)}) \to^{M(fold_A)} M(A)
+#+END_CENTER
+
+Ist G linksrekursiv terminiert das evt nicht, daher fordern wir in dem Fall:
+
+#+BEGIN_CENTER
+compile_G^A = X^{*} \to^{parse_G^{T_{\Sigma(G)}}} M(T_{\Sigma(G')}) \to^{M(fold_{derec(A))}} M(A)
+#+END_CENTER
+
+Es gilt die Vertr"aglichkeit mit \Sigma-Homomorphismen (eingebettet in die Monade nat"urlich)
+
+Gilt [[compile_funktion]], dann folgt aus [[diagram_1]]: 
+- X^{*} \to^{compile_G^A} M(A) \to^{M(evaluate)} M(Mach) \\
+- X^{*} \to^{compile_G^S} M(S) \to^{M(encode)} M(Mach)
+ 
+
+* LL Kompiler
+
+Das erste L steht f"ur die Verarbeitung von *Links* nach Rechts. Das zweite L steht f"ur das bilden einer *Linksableitung*.
+
+- G = (S, BS, R)
+- G' = (S', BS, R')
+- X = \cup BS 
+- M eine Compilermonade
+- errmsg: X^{*} \to E
+- A = (A, Op) eine \Sigma(G)-Algebra
+- /compile_G/ hei"st LL-Compiler, wenn (compile^A_{G,s}: X^{*} \to M(A_s))_{s\[ \in \]S} 
+- compile_{G,s}^A(w) = trans_s^A(w) >>= \lambda(a, w). if w = \epsilon then \eta_A(a) else errmsg(w), wobei f"ur alle s \in S' \cup BS \\ trans_s^A : X^{*} \to M(A_s \times X^{*}) wie folgt definiert ist:
+
+** Fall 1: s \in BS. F"ur alle x \in X und w \in X^{*}
+
+#+BEGIN_CENTER
+trans_s^A(xw) = if x \in s then \eta_{A \times X^{*}}(x,w) else errmsg(xw) \\
+trans_s^A(\epsilon) = errmsg(\epsilon)
+#+END_CENTER
+
+** Fall 2: s \in S'. F"ur alle w \in X^{*},
+
+#+BEGIN_CENTER
+trans_s^A(w) = \oplus_{r=(s \to e)\in R} try_r^A(w)
+#+END_CENTER
+
+
+F"ur alle r = (s \to (e_1,..,e_n))\in R' und w \in X^{*},
+#+BEGIN_CENTER
+try_r^A(w) = trans_{e_1}^A >>= \lambda(a_1,w_1). ...... trans_{e_n}^A(w_{n-1}) >>= \lambda(a_n, w_n).\eta_{A \times X^{*}}(f_r^{derec(A)}(a_{i_1},..,a_{i_k}),w_n)
+#+END_CENTER
+wobei {i_1,..,i_k} = {1 \leq i \leq n | e_i \in S' \cup BS \ Z(G)} \\
+
+
+*_Ein Beispiel ist auf Seite 170 im Folienscript. Das JavaLight+ Beispiel beginnt auf Seite 172_* 
+
+* LR Kompiler
+
+- Konstruieren *Rechtsreduktion* (\Rightarrow Rechtsableitung)
+- Entspricht dem /mit dem Bl"attern beginnender Aufbau eines Syntaxbaumes/, daher *Bottom-up* Compiler
+- LR-Compiler sind auf LR(/k/)-Grammatiken beschr"ankt
+- Sei G = (S, BS, R) eine CFG und X = \cup BS
+- Vorraussetzung: /start/ \in S und /start/ kommt in keiner Regel auf der rechten Seite vor
+
+** LR(k) Grammatiken 
+Eine Grammatik ist eine LR(k) Grammatik, wenn das vorrauslesen von k Symbolen reicht, damit man entscheiden kann ob ein weiteres 
+Zeichen gelesen werden muss oder eine Reduktion durchgef"uhrt werden muss (und wenn ja welche). Au"serdem m"ussen die BS disjunkt sein.
+
+*** Definition first- und follow- Wormengen
+Sei k > 0, \alpha \in (S \cup BS)^{*} und s \in S
+#+BEGIN_CENTER
+first_k(\alpha) = {\beta \in BS^{k} | \exists \gamma \in BS^{*}: \alpha \to^{*}_G \beta\gamma} \cup {\beta \in BS^{<k} | \alpha \to^{*}_G \beta}
+follow_k(s) = {\beta \in BS^{k} | \exists \alpha, \gamma \in BS^{*}: start \to^{*}_G \alpha s \beta\gamma} \cup {\alpha \in BS^{<k} | start \to^{*}_G \alpha s \beta}
+first(\alpha) = first_1(\alpha)
+follow(s) = follow_1(s)
+#+END_CENTER  
+
+Sei recog_1 ein Erkenner f"ur die Sprache (Definition auf Seite 190)
+
+** LR-Automat
+Zustandsmenge:
+- Q_G = {state(\phi) | \phi \in (S \cup BS)^{*}}
+
+/partielle/ Transitionsfunktion (auch goto-Tabelle genannt) 
+- \delta: Q_G \to Q_G^{S \cup BS} \\ state(\phi) = \lambda(s).state(\phi s)
+
+*** Simultane induktive Definition von Q_G und \delta_G
+#+BEGIN_CENTER
+start \to \alpha \in R \Rightarrow (start, \epsilon, \alpha, \epsilon) \in q_0 \\
+(s, \alpha, s', \beta, u) \in q \land s' \to \gamma \in R \land v \in first(\beta u) \Rightarrow (s', \epsilon, \gamma, v) \in q \\
+(s, \alpha, s'\beta, u) \in q, s' \in S \cup BS \Rightarrow (s, \alpha s', \beta, u) \in \delta_G(q)(s')
+#+END_CENTER
+
+- h: (S \cup BS)^{*} \to Q^{*}_G
+- state(\epsilon) =_def \lambda(\epsilon). q_0
+- \lambda(s_1,..,s_n). (state(s_1...s_n), state(s_1...s_{n-1}),.., state(s_1), state(\epsilon))
+
+
+Wir definieren recog_2: Q^{*}_G \to 2^{X^{*}} \\
+F"ur alle q, q_i \in Q_G, qs \in Q^{*}_G, x \in X und w \in X^{*},
+- recog_2(q:qs)(xw) = recog_2(\delta_G(q)(x):q:qs)(w) \\ falls \exists (s, \alpha, \beta, \epsilon) \in q : \beta \neq \epsilon, x \in first(\beta) \cap Z(G)
+- recog_2(q:qs)(xw) = recog_2(\delta_G(q)(B):q:qs)(w) \\ falls \exists (s, \alpha, \beta, \epsilon) \in q, B \in BS: \\ \beta \neq \epsilon, x \in B \in first(\beta)
+- recog_2(q_1: ... :q_{|\alpha|}:q:qs)(w) = recog_2(\delta_G(q)(s):q:qs)(w) \\ falls \exists (s, \alpha, \epsilon u) \in q_1:s \neq start, \\ w = \epsilon = u \lor head(w) = u \in Z(G) \lor \\ head(w) \in u \in BS
+- recog_2(q:qs)(\epsilon) = 1 falls \exists \varphi : (start, \varphi, \epsilon, \epsilon) \in q
+- recog_2(qs)(w) = 0 sonst
+
+Offenbar gilt recog_1 = recog_2 \bigcirc h.
+
+Zur optimieren verwenden wir eine Aktionstabelle 
+- act_G: Q_G \times (BS \cup 1) \to R \cup {shift, error}
+F"ur alle u \in BS \cup,
+
+- act_G(q, u) = shift falls \exists (s, \alpha, \beta, \epsilon) \in q: \beta \neq \epsilon, u \in first(\beta), \\ s \to \alpha falls \exists (s, \alpha, \epsilon u) \in q, \\ /error/ sonst
+
+Dann erh"alt man eine Kompaktedefinition f"ur recog_2:
+
+F"ur alle q, q_i \in Q_G, qs \in Q^{*}_G, x \in X und w \in X^{*},
+- recog_2(q:qs)(xw) = recog_2(\delta_G(q)(x):q:qs)(w) \\ falls x \in Z(G), act_G(q, x) = shift
+- recog_2(q:qs)(xw) = recog_2(\delta_G(q)(B):q:qs)(w) \\ falls \exists B \in BS : x \in B, act_G(q, B) = shift
+- recog_2(q_1:...:q_{|\alpha|}:q:qs)(w) = recog_2(\delta_G(q)(s):q:qs)(w) \\ falls \exists u \in BS \cup 1: act_G(q_1, u) = s \to \alpha,\\ w = \epsilon = u \lor head(w) = u \in Z(G) \lor \\ head(w) \in u \in BS
+- recog_2(q:qs)(\epsilon) = 1 falls act_G(q, \epsilon) = start \to \alpha
+- recog_2(qs)(w) = 0 sonst
+
+Beispiel f"ur SAB2 auf Seite 197 im Skript.
+
+*** Formulierung der Korrektheit von compile_G
+- F"ur alle w \in X^{*} und t \in T_{\Sigma(G), start}, \\ compile_G^A(q_0, \epsilon)(w) = \eta(fold^A(t)) \Rightarrow fold^{Word(G)}(t) = w, \\ compile_G^A(q_0, \epsilon)(w) = error(w) \Rightarrow w \notin L(G)_{start}
+***  Beispiel SAB2; Seite 203
+
+*** Beispiel yacc; Seite 204 
+
+*** Sprachklassen-Hierarchie
+
+- CFG \subset LR(k) \subset LL(k)
+- LR(k) \subset LALR(k) \subset SLR(k) 
+- LL(k)-Grammatiken sind _kurz gesagt_ diejenigen nicht-linksrekursiven CFGs, deren LL-Parser ohne Backtracking auskommen. 
+- F"ur jeden Grammatiktyp T bedeutet die Formulierung *L ist eine T-Sprache* lediglich, dass eine T-Grammatik /existiert/ die L erzeugt 
+
+**** Kommentar zu LL-Compiler
+
+W"ahrend der LL-Compiler von Kapitel 6 - nach Beseitigung von Linksrekursion - jede kontexfreie Grammatik verarbeitet, selbst dann,
+wenn sie mehrdeutig ist, zeigt die obige Grafikm dass die Forderung, dabei ohne Backtracking auszukommen, die Klasse der kompilierbaren 
+Sprache erheblich einschr"ankt: Unter dieser Bedingung ist die bottom-up "Ubersetzung offenbar m"achtiger als die top-down Compilation.
+
+Umgekehrt w"are es den Versuch wert (z.B. in Form einer BA), in Anlehnung an den obigen Compiler f"ur LR(1)-Grammatiken einen bottom-up
+Compiler mit Backtracking zu entwickeln. Da die Determinismusforderung wegfiele, br"auchten wir keinen Lookahead beim Verarbeiten der 
+Eingabe, womit die Zust"ande generell nur aus Tripeln best"unden - wie im beispiel Yacc.
+
+* Haskell: Typen und Funktionen
+Ich hoffe ihr seid fit in Haskell
+
+* Haskell: Listen
+
+* Haskell: Datentypen und Typklassen
+
+* Algebren in Haskell
+
+Sei \Sigma = (S, F) eine Signatur, obs(\Sigma) = {x_1,...,x_k}, S = {s_1,...,s_m} und F = {f_1: e_1 \to e'_1 .. f_n: e_n \to e'_n}.\\
+Jede \Sigma-Algebra entspricht einem Element des folgenden polymorphen Datentyps:
+#+BEGIN_SRC haskell
+  data Sigma x1 ... xk s1 ... sm = Sigma {f1 :: e1 -> e1', ...,
+                                          fn :: en -> en'}
+#+END_SRC
+
+Die Sorten und Operationen von \Sigma werden durch Typvariablen bzw. Destruktoren wiedergegeben und durch die Tr"agermengen bzw. 
+kaskadierten Funktionen der jeweiligen Algebra instanziiert.
+
+Um eine Signatur \Sigma in Haskell zu implementieren, gen"ugt es daher, den Datentyp ihrer Algebren nach obigem Schema zu formulieren.
+
+Der Datentyp Sigma(x_1)...(x_k) repr"asentieren die Tr"agermengen einzelner Algebren.
+
+** Beispiel f"ur Nat
+
+#+BEGIN_SRC haskell 
+  --natT implementiert T_Nat
+  data Nat nat = Nat {zero :: nat, succ :: nat -> nat}
+
+  natT :: Nat Int
+  natT = Nat {zero = 0, succ = (+1)}
+
+  --listT implementiert T_list(X)
+  data List x list = List {nil :: list, cons :: x -> list -> list}
+
+  listT :: List x [x]
+  listT = List {nil = [], cons = (:)}
+
+  --Beispiel foldList
+
+  foldList :: List x list -> [x] -> list
+  foldList alg [] = nil alg
+  foldList alg (x:s) = cons alg x $ foldList alg s
+#+END_SRC 
+
+Weitere Beispiele ab Seite 252.
+
+** Datentypen der JavaLight-Algebren
+
+#+BEGIN_SRC haskell 
+  data JavaLight commands command sum prod factor disjunct conjunct literal =
+    JavaLight {seq_ :: command -> commands -> commands
+              ,embed :: command -> commands
+              ,block :: commands -> command
+              ,assign :: String -> sum -> command
+              ,cond :: disjunct -> command -> command -> command
+              ,cond1, loop :: disjunct -> command -> command
+              ,sum_ :: prod -> sum
+              ,plus, minus :: sum -> prod -> sum
+              ,prod :: factor -> prod
+              ,times, div_ :: prod -> factor -> prod
+              ,embedI :: Int -> factor
+              ,var :: String -> factor
+              ,encloseS :: sum -> factor
+              ,disjunct :: conjunct -> disjunct -> disjunct
+              ,embedC :: conjunct -> disjunct
+              ,conjunct :: literal -> conjunct -> conjunct
+              ,embedL :: literal -> conjunct
+              ,not_ :: literal -> literal
+              ,atom :: String -> sum -> sum -> literal
+              ,embedB :: Bool -> literal
+              ,encloseD :: disjunct -> literal}
+
+  data SumProd sum sumsect prod prodsect factor =
+    SumProd {sum' :: prod -> sumsect -> sum
+            ,plus', minus' :: prod -> sumsect -> sumsect
+            ,nilS :: sumsect
+            ,prod' :: factor -> prodsect -> prod
+            ,times', div' :: factor -> prodsect -> prodsect
+            ,nilP :: prodsect}
+
+  derec :: JavaLight s1 s2 sum prod factor s3 s4 s5 -> SumProd sum (sum -> sum) prod (prod -> prod) factor
+  derec alg = SumProd {sum' = \a g -> g $ sum_ alg a,
+                       plus' = \a g x -> g $ plus alg x a,
+                       minus' = \a g x -> g $ minus alg x a,
+                       nilS = id,
+                       prod' = \a g -> g $ prod alg a,
+                       times' = \a g x -> g $ times alg x a,
+                       div' = \a g x -> g $ div_ alg x a,
+                       nilP = id}
+                        
+                        
+#+END_SRC
+
+
+** Die Termalgebra von JavaLight 
+
+#+BEGIN_SRC haskell 
+  data Commands = Seq (Command, Commands) | Embed Command deriving Show
+
+  data Command = Block Commands | Assign (String, Sum) |
+                 Cond (Disjunct, Command, Command) | Cond1 (Disjunct, Command) |
+                 Loop (Disjunct, Command) deriving Show
+
+  data Sum = SUM Prod | PLUS (Sum, Prod) | MINUS (Sum, Prod) deriving Show
+
+  data Prod = PROD Factor | TIMES (Prod, Factor) | DIV (Prod, Factor) deriving Show
+
+  data Factor = EmbedI Int | Var String | EncloseS Sum deriving Show
+
+  data Disjunct = Disjunct (Conjunct, Disjunct) | EmbedC Conjunct deriving Show
+
+  data Conjunct = Conjunct (Literal, Conjunct) | EmbedL Literal deriving Show
+
+  data Literal = Not Literal | Atom (String, Sum, Sum) | EmbedB Bool | EncloseD Disjunct deriving Show
+
+
+  javaTerm :: JavaLight Commands Command Sum Prod Factor Disjunct Conjunct Literal
+  javaTerm = JavaLight { seq_ = curry Seq, embed = Embed, block = Block
+                       ,assign = curry Assign, cond = curry3 Cond, cond1 = curry Cond1
+                       ,loop = curry Loop, sum_ = SUM, plus = curry PLUS
+                       ,minus = curry MINUS, prod = PROD, times = curry TIMES
+                       ,div_ = curry DIV, embedI = EmbedI, var = Var
+                       ,encloseS = EncloseS, disjunct = curry Disjunct, embedC = EmbedC
+                       ,conjunct = curry Conjunct, embedL = EmbedL, not_ = Not
+                       ,atom = curry3 Atom, embedB = EmbedB, encloseD = EncloseD}
+
+  javaWord :: JavaLight String String String String String String String
+  javaWord = JavaLight {seq_ = (++)
+                       ,embed = id
+                       ,block = \cs -> " {" ++ cs ++ "}"
+                       ,assign = \x e -> x ++ " = " ++ e ++ "; "
+                       ,cond = \e c c' -> "if " ++ e ++ c ++ " else" ++ c'
+                       ,cond1 = \e c -> "if " ++ e ++ c
+                       ,loop = \e c -> "while " ++ e ++ c
+                       ,sum_ = id
+                       ,plus = \e e' -> e ++ '+':e'
+                       ,minus = \e e' -> e ++ '-':e'
+                       ,prod = id
+                       ,times = \e e' -> e ++ '*':e'
+                       ,div_ = \e e' -> e ++ '/':e'
+                       ,embedI = show
+                       ,var = id
+                       ,encloseS = \e -> '(' : e ++ ")"
+                       ,disjunct = \e e' -> e ++ " || " ++ e'
+                       ,embedC = id
+                       ,conjunct = \e e' -> e ++ " && " ++ e'
+                       ,embedL = id
+                       ,not_ = \be -> '!' : be
+                       ,atom = \rel e e' -> e ++ rel ++ e'
+                       ,embedB = show
+                       ,encloseD = \e -> '(' : e ++ ")"}
+             
+#+END_SRC
+
+** Zustandsmodell von JavaLight
+
+#+BEGIN_SRC haskell 
+  type St a = Store -> a
+
+  rel :: String -> Int -> Int -> Bool
+  rel = \case "<" -> (<)
+              ">" -> (>)
+              "<=" -> (<=)
+              ">=" -> (>=)
+              "==" -> (==)
+              "!=" -> (/=)
+
+  javaState :: JavaLight (St Store) (St Store) (St Int) (St Int) (St Int) (St Bool) (St Bool) (St Bool)
+  javaState = JavaLight {seq_ = flip (.)
+                        ,embed = id
+                        ,block = id
+                        ,assign = \x e st -> update st x $ e st
+                        ,cond = cond
+                        ,cond1 = \p f -> cond p f id
+                        ,loop = loop
+                        ,sum_ = id
+                        ,plus = liftM2 (+)
+                        ,minus = liftM2 (-)
+                        ,prod = id
+                        ,times = liftM2 (*)
+                        ,div_ = liftM2 div
+                        ,embedI = const
+                        ,var = flip ($)
+                        ,encloseS = id
+                        ,disjunct = liftM2 (||)
+                        ,embedC = id
+                        ,conjunct = liftM2 (&&)
+                        ,embedL = id
+                        ,not_ = (not .)
+                        ,atom = liftM2 . rel
+                        ,embedB = const
+                        ,encloseD = id}
+              where
+                cond :: St Bool -> St Store -> St Store -> St Store
+                cond p f g st = if p st then f st else g st
+                loop :: St Bool -> St Store -> St Store
+                loop p f st = if p st then loop f $ f st else st
+                
+#+END_SRC
+
+*** Interpretation eines JavaLight Programms
+
+prog = fact = 1; while x > 1 {fact = fact*x; x = x-1;}
+
+compile^A_{JavaLight}(prog) : Store \to Store \\
+compile^A_{JavaLight} = \lambda(store). \lambda(z). if z = x then 0 else if z = fact then store(x)! else store(z)
+
+** Ableitungsbaumalgebra von JavaLight
+
+#+BEGIN_SRC haskell 
+  type TS = Tree String
+
+  javaDeri :: JavaLight TS TS TS TS TS TS TS
+  javaDeri = JavaLight {seq_ = \c c' -> F "Commands" [c,c']
+                       ,embed = \c -> F "Commands" [c]
+                       ,assign = \x e -> command [leaf x, leaf "=", e, leaf ";"]
+                       ,cond = \e c c' -> command [leaf "if", e, c, leaf "else", c']
+                       ,cond1 = \e c -> command [leaf "if", e, c]
+                       ,loop = \e c -> command [leaf "while", e, c]
+                       ,sum_ = \e -> F "Sum" [e]
+                       ,plus = \e e' -> F "Sum" [e, e']
+                       ,minus = \e e' -> F "Sum" [e, e']
+                       ,prod = \e -> F "Prod" [e]
+                       ,times = \e e' -> F "Prod" [e, e']
+                       ,div_ = \e e' -> F "Prod" [e, e']
+                       ,embedI = \i -> factor [leaf $ show i]
+                       ,var = \x -> factor [leaf x]
+                       ,encloseS = \e -> factor [leaf "(", e, leaf ")"]
+                       ,disjunct = \e e -> F "Disjunct" [e, leaf, "||", e']
+                       ,embedC = \e -> F "Disjunct" [e]
+                       ,conjunct = \e e' -> F "Conjunct" [e, leaf "&&", e']
+                       ,embedL = \e -> F "Conjunct" [e]
+                       ,not_ = \be -> literal [leaf "!", be]
+                       ,atom = \rel e e' -> literal [e, leaf rel, e']
+                       ,embedB = \b -> literal [leaf $ show b]
+                       ,encloseD = \e -> literal [leaf "(", e, leaf ")"]}
+             where
+               command = F "Command"
+               factor = F "Factor"
+               literal = F "Literal"
+               leaf = flip F []
+                       
+             
+#+END_SRC
+
+** Beispiel XMLstore-Algebren (Seite 265)
+
+* Attributierte "Ubersetzung
+** Bin"ardarstellung rationaler Zahlen
+** Strings mit Hoch- und Tiefdarstellung
+** "ubersetzung regul"arer Ausdr"uck in erkennenden Automaten 
+** Darstellung von Termen als hierarchische Listen
+** Eine kellerbasierte Zielsprache f"ur JavaLight
+Der folgende Datentyp liefert die Befehle einer Assemblersprache, die auf einem Keller vom Typ Z und einem Speicher vom Typ
+#+BEGIN_CENTER
+Store = String \to Z
+#+END_CENTER
+operiert. Hierbei betrachten wir die Abstraktion eines realen Speichers.
+
+#+BEGIN_SRC haskell 
+  data StackCom = Push Int | Pop | Load String | Save String | Add |
+                  Sub | Mul | Div | Or_ | And_ | Inv | Cmp String | Jump Int |
+                  JumpF Int
+
+  type State = ([Int], Store, Int)
+
+  executeCom :: StackCom -> State -> State
+  executeCom com (stack, store, n) =
+    case com of Push a -> (a:stack, store, n+1)
+                Pop    -> (tail stack, store, n+1)
+                Load x -> (store x:stack, store, n+1)
+                Save x -> (stack, update store x $ head stack, n+1)
+                Add    -> (a+b:s, store, n+1) where a:b:s = stack
+                Sub    -> (b-a:s, store, n+1) where a:b:s = stack
+                Mul    -> (a*b:s, store, n+1) where a:b:s = stack
+                Div    -> (a`div`b:s, store, n+1) where a:b:s = stack
+                Or_    -> (max a b:s, store, n+1) where a:b:s = stack
+                And_   -> (a*b:s, store, n+1)     where a:b:s = stack
+                Inv    -> ((a+1) `mod`2:s, store, n+1) where a:s = stack
+                Cmp str -> (c:s, store, n+1)
+                  where a:b:s = stack
+                        c = if rel str a b then 1 else 0
+                Jump k  -> (stack, store, k)
+                JumpF k -> (stack, store, if a == 0 then k else n+1) where a:_ = stack
+
+  execute :: [StackCom] -> State -> State
+  execute cs state@(_,_,n) = if n >= length cs then State
+                             else execute cs $ executeCom (cs !! n) state
+#+END_SRC
+
+Die Tr"agermengen haben neben dem jeweiligen Zielcode code ein (vererbtes) Attribut, das die Nummer des erten Befehls von code
+wiedergibt. Dementsprechend interpretiert javaStack alle Sorten von JavaLight durch den Funktionstyp
+
+#+BEGIN_SRC haskell 
+  type LCom = Int -> [StackCom]
+
+  javaStack :: JavaLight LCom LCom LCom LCom LCom LCom LCom
+  javaStack = JavaLight {seq_ = seq_
+                        ,embed = id
+                        ,block = id
+                        ,assign = \x e lab -> e lab ++ [Save x, Pop]
+                        ,cond = \e c c' lab -> let (code, exit) = fork e c 1 lab
+                                                   code' = e' exit
+                                               in code ++ Jump (exit + length code') : code'
+                        ,cond1 = \e c -> fst . fork e c 0
+                        ,loop = \e c lab -> fst (fork e c 1 lab) ++ [Jump lab]
+                        ,sum_ = id
+                        ,plus = apply2 Add
+                        ,minus = apply2 Sub
+                        ,prod = id
+                        ,times = apply2 Mul
+                        ,div_ = apply2 Div
+                        ,embedI = \i -> const [Push i]
+                        ,var = \x -> const [Load x]
+                        ,encloseS = id
+                        ,disjunct = apply2 Or_
+                        ,embedC = id
+                        ,conjunct = apply2 And_
+                        ,embedL = id
+                        ,not_ = apply1 Inv
+                        ,atom = apply2 . Cmp
+                        ,embedB = \b -> const [Push $ if b then 1 else 0]
+                        ,encloseD = id}
+              where apply1 :: StackCom -> LCom -> LCom
+                    apply1 op e lab = e lab ++ [op]
+                    seq_ :: LCom -> LCom -> LCom
+                    seq_ e e' lab = code ++ e' (lab + length code)
+                      where code = e lab
+                    apply2 :: StackCom -> LCom -> LCom -> LCom
+                    apply2 op e e' lab = code ++ e' (lab + length code) ++ [op]
+                      where code = e lab
+                    fork :: LCom -> LCom -> Int -> Int -> ([StackCom], Int)
+                    fork e c n lab = (code ++ JumpF exit : code', exit)
+                      where code = e lab
+                            lab' = lab + length code + 1
+                            code' = c lab'
+                            exit = lab' + length code' + n
+#+END_SRC
+
+* JavaLight+ = JavaLight + I/O + Deklaration + Prozedure
+Ich meine, er h"atte gesagt, dass sei f"ur die Pr"ufung nicht mehr relevant, deshalb habe ich viele Details weg gelassen.
+** Assemblersprache mit I/O und Kelleradressierung
+
+Die Variablenbelegung store: String \to Z mit Zustandsmodell von Abschnitt Assemblerprogramm als JavaLight-Zielalgebra wird ersetzt 
+durch den Keller stack \in Z^{*}, der jetzt nicht nur der schrittweisen Auswertung von Ausdr"ucken dient, sondern auch der Ablage von 
+Variablenwerten unter vom Compiler berechneten Adressen. Witerer Zustandskomponenten sind:
+
+- der Inhalt des Registers *BA* f"ur die jeweils aktuelle Basisadresse
+- der Inhalt des Registers *STP* f"ur die Basisadresse des statischen Vorg"angers des jeweils zu "uberstzenden Blocks bzw. Funktionsaufruf
+- der schon Abschnitt 12.5 benutze *Befehlsz"ahler* pc (program counter)
+- der Ein/Ausgabestrom io, auf den Lese- bzw Schreibbefehler zugreifen
+
+Der entsprechende Datentyp lautet daher wie folgt
+
+#+BEGIN_SRC haskell 
+  data State = State {stack, io :: [Int], ba, stp, pc :: Int}
+
+  baseAdr :: Int -> Int -> SymAdr
+  baseAdr declDep dep = if declDep == dep then BA else Dex BA declDep
+
+  -- Die folgenden Funktionen berechnen aus symbolischen Adressen
+  -- absolute Adressen bzw. Kellerinhalte:
+
+  absAdr, contents :: State -> SymAdr -> Int
+  absAdr _ (Con i) = i
+  absAdr state BA = ba state
+  absAdr state STP = stp State
+  absAdr state TOP = length $ stack state
+  absAdr state (Dex BA i) = ba state+i
+  absAdr state (Dex STP i) = stp state + i
+  absAdr state (Dex adr i) = contents state adr + i
+
+  contents state (Dex adr i) = s !! (k-i)
+                               where (s,k) = stackPos state adr
+  contents state adr = absAdr state adr
+
+  stackPos :: State -> SymAdr -> ([Int], Int)
+  stackPos state adr = (s, length s-1-contents state adr)
+                       where s = stack State
+
+  updState :: State -> SymAdr -> Int -> State
+  updState state BA x = state {ba = x}
+  updState state STP x = state {stp = x}
+  updState state (Dex adr i) x = state {stack = updList s (k-i) x}
+    where (s, k) = stackPos state adr
+#+END_SRC
+
+
+Die Algebra funktioniert "ahnlich wie die vorige (f"ur eine Definition, Folien Skript 193)
+
+** Grammatik und abstrakte Syntax von JavaLight+
+
+JavaLight+ enth"ahlt neben den Sorten von JavaLight die Sorten Formals und Actuals f"ur Listen formaler bzw. aktueller Parameter von 
+Prozeduren. Auch die BS von JavaLigth werden "ubernommen. Hinzu kommt eine f"ur formale Paramter. Sie besteht aus mit zwei 
+Konstruktoren aus dem jeweiligen Parameternamen und einem Typdeskriptor gebildeten Ausdruck:
+
+#+BEGIN_SRC haskell
+  data TypeDesc = INT | BOOL | UNIT | Fun TypeDesc INT | ForFun TypeDesc
+  data Formal = Par String TypeDesc | FunPar String [Formal] TypeDesc
+#+END_SRC
+- FunPar (x)(t) : Prozedurvariable
+- ForFun(t) : Typ einer Prozedurvariable, t ist hier der Typ der Prozedurergebnisse 
+- Fun(t,lab): Prozedurkonstante, t Ergebnistyp, Codeadresse lab.
+
+Die Grammatik findet sich auf Seite 294 im Skript. \\
+Abstrakte Syntax Seite 295. \\
+** javaStackP-Alpgebra, Seite 297
+
+javaStackP umschlie"st im Gegensatz zu javaStack bei der Zusammenfassung einer Kommandofolge cs zu einem Block den code von cs mit 
+zus"atzlichen Zielcode. (Beispiel S. 302)
+
+** Weitere Lekt"ure
+- Kapitel 5, wird auch die "Ubersetzung von Feldern und Records behandelt. (?)
+- Grundlagen der Kompilation funktionaler Sprachen findet man in Kapitel 7
+- Die "Ubersetzung oo Sprachen sind Thema von [46], Kapitel 5
+
+** Beispiel Programm (S. 314)
+
+* Mehrp"assige Compiler (S. 319)
+Wird nicht besprochen in der Veranstaltung
+
+* Funktoren und Monaden in Haskell
+Sind aus FuPro /hoffentlich/ bekannt.
+
+* Induktion, Coinduktion und rekursive Gleihcungen (S. 354)
+Sollte auch bekannt sein.
+
+* Iterative Gleichungen (S. 370)
+
+* Interpretation in stetigen Algebren (S. 387)
+
+* Literatur (S. 420)

@@ -1,0 +1,1661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Zusammenfassung "Ubau</title>
+<!-- 2017-08-25 Fri 05:16 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Zusammenfassung "Ubau</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Weg zum generischen Compiler</a></li>
+<li><a href="#sec-2">2. Algebraische Modellierung</a>
+<ul>
+<li><a href="#sec-2-1">2.1. Grundlagen</a></li>
+<li><a href="#sec-2-2">2.2. Mehrsortige Mengen</a></li>
+<li><a href="#sec-2-3">2.3. Produkte und Summen als universelle Konstruktionen</a>
+<ul>
+<li><a href="#sec-2-3-1">2.3.1. Produkt</a></li>
+<li><a href="#sec-2-3-2">2.3.2. Summe</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-4">2.4. Typen und Signaturen</a></li>
+<li><a href="#sec-2-5">2.5. Signaturen</a>
+<ul>
+<li><a href="#sec-2-5-1">2.5.1. Konstruktive Signaturen</a></li>
+<li><a href="#sec-2-5-2">2.5.2. Destruktive Signaturen</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-6">2.6. Algebren</a>
+<ul>
+<li><a href="#sec-2-6-1">2.6.1. Beispiele</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-7">2.7. Terme und Coterme</a>
+<ul>
+<li><a href="#sec-2-7-1">2.7.1. Terme</a></li>
+<li><a href="#sec-2-7-2">2.7.2. Coterme</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-8">2.8. <i>Bool</i>-Algebra</a></li>
+<li><a href="#sec-2-9">2.9. Termfaltung</a></li>
+<li><a href="#sec-2-10">2.10. Zustandsentfaltung</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Rechnen mit Algebren</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Unteralgebra</a></li>
+<li><a href="#sec-3-2">3.2. Substitution</a></li>
+<li><a href="#sec-3-3">3.3. Term"aquivalenz</a></li>
+<li><a href="#sec-3-4">3.4. Normalformen</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Kontextfreie Grammatiken (CFGs)</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Definition</a></li>
+<li><a href="#sec-4-2">4.2. Die JavaLight Grammatik</a>
+<ul>
+<li><a href="#sec-4-2-1">4.2.1. R</a></li>
+<li><a href="#sec-4-2-2">4.2.2. BS</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-3">4.3. Beispiel Programm</a></li>
+<li><a href="#sec-4-4">4.4. Linksrekursive Grammatiken</a>
+<ul>
+<li><a href="#sec-4-4-1">4.4.1. Einschub Ableitungsrelation</a></li>
+<li><a href="#sec-4-4-2">4.4.2. Definition</a></li>
+<li><a href="#sec-4-4-3">4.4.3. Beispiel</a></li>
+<li><a href="#sec-4-4-4">4.4.4. Verfahren zur Elemenierung von Linksrekursion</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-5">4.5. Abstrakte Syntax</a>
+<ul>
+<li><a href="#sec-4-5-1">4.5.1. Beispiel JavaLight</a></li>
+<li><a href="#sec-4-5-2">4.5.2. JavaLight' (entlinksrekursiv)</a></li>
+<li><a href="#sec-4-5-3">4.5.3. Syntaxbaum Beispiel</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-6">4.6. Definition derec(G)</a></li>
+<li><a href="#sec-4-7">4.7. Wort- und Ableitungsbaumalgebra</a>
+<ul>
+<li><a href="#sec-4-7-1">4.7.1. Wortalgebra</a></li>
+<li><a href="#sec-4-7-2">4.7.2. Ableitungsbaumalgebra</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-8">4.8. Zustandsmodell von JavaLight</a>
+<ul>
+<li><a href="#sec-4-8-1">4.8.1. Sorten</a></li>
+<li><a href="#sec-4-8-2">4.8.2. Operationen</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Parser und Compiler f"ur CFGs</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Definition Parser</a></li>
+<li><a href="#sec-5-2">5.2. Funktoren und Monaden</a>
+<ul>
+<li><a href="#sec-5-2-1">5.2.1. Definition Kategorie</a></li>
+<li><a href="#sec-5-2-2">5.2.2. Defintion Funktor</a></li>
+<li><a href="#sec-5-2-3">5.2.3. Definition Nat"urliche Transformation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Weg zum generischen Compiler</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>kontextfreie Sprache &rarr; Parser &rarr; Termalgebra &rarr; generische Faltung &rarr; Algebra
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Algebraische Modellierung</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Grundlagen</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Seien A, B Mengen, f: A &rarr; B, C \subseteq A, D \subseteq B, n &gt; 0.
+</p>
+
+<ul class="org-ul">
+<li>&empty;: leere Menge
+</li>
+<li>1: {&epsilon;}
+</li>
+<li>2: {0,1}
+</li>
+<li>[n]: {1,..,n}
+</li>
+<li>&Delta;<sup>n</sup><sub>A</sub> =<sub>def</sub> {(a<sub>1</sub>,..,a<sub>n</sub>) &isin; A<sup>n</sup> | &forall; 1 &le; i &lt; n: a<sub>i</sub> = a<sub>i+1</sub> }
+</li>
+<li>f(C) =<sub>def</sub> {f(a) | a &isin; C} = P(f)(C) 
+</li>
+<li>img(f) =<sub>def</sub> f(A)
+</li>
+<li>f<sup>-1</sup>(D) =<sub>def</sub> {a &isin; A | f(a) &isin; D}
+</li>
+<li>ker(f) =<sub>def</sub> {(a,a') &isin; A &times; A | f(a) = f(a')}
+</li>
+<li>graph(f) =<sub>def</sub> {(a, f(a)) &isin; A &times; B | a &isin; A}
+</li>
+<li>f|<sub>C</sub>: C &rarr; B = c &rarr; f(c)
+</li>
+<li>f[b/a]: A &rarr; B = c &rarr; if c = a then b else f(c)
+</li>
+<li>&chi;: P(A) &rarr; 2<sup>A</sup> = C &rarr; &lambda; a. if a &isin; C then 1 else 0
+</li>
+<li>f ist surjektiv &hArr;<sub>def</sub> img(f) = B
+</li>
+<li>f ist injektiv &hArr;<sub>def</sub> ker(f) = &Delta;<sup>2</sup><sub>A</sub>
+</li>
+<li>f ist bijektiv &hArr;<sub>def</sub> &exist; g: B &rarr; A: g . f = id<sub>A</sub> \and f . g = id<sub>B</sub>
+</li>
+<li>A &cong; B &hArr;<sub>def</sub> &exist; f: A &rarr; B und f ist bijektiv
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Mehrsortige Mengen</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Sei S eine Menge. Ein Tuple A = (A<sub>s</sub>)<sub>s\[ \in \]S</sub> ist dann eine S-indizierte(sortige) Menge.
+</li>
+<li>Seien A = (A<sub>s</sub>)<sub>s\[ \in \]S</sub> und B = (B<sub>s</sub>)<sub>s\[ \in\]S</sub> S-sortige Mengen. f: A &rarr; B ist eine S-sortige Menge (f<sub>s</sub>)<sub>s\[ \in \]S</sub>, so dass &forall; s &isin; S. f<sub>s</sub>:A<sub>s</sub> &rarr; B<sub>s</sub>.
+</li>
+<li>Seien n &gt; 0. Eine n-stellige S-sortige Relation auf A ist eine S-sortige Menge R = (R<sub>s</sub>)<sub>s\[ \in \]S</sub> mit R<sub>s</sub> \subseteq A<sub>s</sub><sup>n</sup> f"ur alle  s&isin; S. 
+</li>
+<li>Im Fall n = 1, hei"st R S-sortige Teilmenge von A genannt.
+</li>
+<li>kartesisches Produkt einer I-sortigen Menge: &times;<sub>i\[ \in \]I</sub>A<sub>i</sub> = {f:I &rarr; &cup;<sub>i\[ \in\]I</sub>A<sub>i</sub> | &forall; i&isin; I : f(i) &isin; A<sub>i</sub>}
+</li>
+<li>Gibt es eine Menge A mit A<sub>i</sub> = A f"ur alle i&isin; I, dann stimmt &times;<sub>i\[ \in \]I</sub>A<sub>i</sub> offenbar mit A<sup>I</sup> "uberein. Im Fall I = [n] f"ur ein n &gt; 1 schreibt man auch A<sub>1</sub> &times; &#x2026; &times; A<sub>n</sub> anstelle von &times;<sub>i\[ \in \]I</sub> A<sub>i</sub> und A<sup>n</sup> snatelle von A<sup>I</sup>.
+</li>
+<li>disjunkte Vereinigung: \uplus<sub>i\[ \in \]I</sub>A<sub>i</sub> = &cup;<sub>i\[ \in \]I</sub>(A<sub>i</sub> &times; {i})
+</li>
+<li>Im Fall I = [n] f"ur ein n &gt; 1 schreibt man auch A<sub>1</sub> + .. + A<sub>n</sub> anstelle von \uplus<sub>i\[ \in \]I</sub>A<sub>i</sub>.
+</li>
+<li>A<sup>+</sup> =<sub>def</sub> &cup;<sub>n&gt;0</sub>A<sup>n</sup>
+</li>
+<li>1 =<sub>def</sub> {&epsilon;}
+</li>
+<li>A<sup>*</sup> =<sub>def</sub> 1 &cup; A<sup>+</sup>
+</li>
+<li>&sdot;: A<sup>*</sup> &times; A<sup>*</sup> &rarr; A<sup>*</sup> und &sdot;: P(A<sup>*</sup>) &times; P(A<sup>*</sup>) &rarr; P(A<sup>*</sup>) ist die Konkatenationen von Strings
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Produkte und Summen als universelle Konstruktionen</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Sei I eine nichtleere Menge und A eine I-sortige Menge.
+Das kartesische Produkt und die disjunkte Vereinigung eines Mengentupels A haben bestimmte <b>universelle Eigenschaften</b>.
+</p>
+<ul class="org-ul">
+<li>Jede Menge mit den universellen Eigenschaften des kartesischen Produkts nennt man <i>Produkt von A</i>
+</li>
+<li>Jede Menge mit den universellen Eigenschaften der disjunkten Vereinigung nennt man <i>Summe von A</i>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> Produkt</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Sei A = (A<sub>i</sub>)<sub>i\[ \in \]I</sub> ein Mengentuple, P eine Menge und &pi; = (&pi;<sub>i</sub>: P &rarr; A<sub>i</sub>)<sub>i\[ \in \]I</sub> ein Funktionstuple.
+Das Paar (P, &pi;) hei"st <b>Produkt von A</b>, wenn es f"ur alle Tuple (f<sub>i</sub>: B &rarr; A<sub>i</sub>)<sub>i\[ \in \]I</sub> genau eine Funktion f: B &rarr; P gibt derart,
+dass f"ur alle i&isin; I Folgendes gilt:
+</p>
+
+<div class="center">
+<p>
+&pi;<sub>i</sub> . f = f<sub>i</sub>       
+</p>
+</div>
+
+<p>
+&pi;<sub>i</sub> hei"st i-te Projektion von P und g Produktextension oder Range-Tuple von f. g wird mit \langle f<sub>i</sub> \rangle<sub>i\[ \in \]I</sub> und im Falle
+von I = [n], n &gt; 1, auch mit \langle f<sub>1</sub>,..,f<sub>n</sub> \rangle bezeichnet.
+</p>
+
+<p>
+Demnach gilt:
+</p>
+
+<div class="center">
+<p>
+(&forall; i&isin; I : &pi;<sub>i</sub> . f = &pi;<sub>i</sub> \bigcirc g) &rArr; f = g
+</p>
+</div>
+
+<p>
+&times;<sub>i\[ \in \]I</sub>A<sub>i</sub> ist ein Produkt von A.
+</p>
+
+<p>
+Die Projektion und Produktextensionen f"ur &times;<sub>i\[ \in \]I</sub>A<sub>i</sub> sind wie folgt definiert:
+</p>
+<ul class="org-ul">
+<li>F"ur alle i&isin; I und f&isin; &times;<sub>i\[ \in \]I</sub>A<sub>i</sub>, &pi;<sub>i</sub>(f) =<sub>def</sub> f(i)
+</li>
+<li>F"ur alle (f<sub>i</sub>: B &rarr; A<sub>i</sub>)<sub>i\[ \in \]I</sub>, b&isin; B und i &isin; I, \langle f<sub>i</sub> \rangle<sub>i\[ \in \]I</sub>(b)(i) =<sub>def</sub> f<sub>i</sub>(b).
+</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-3-1-1" name="sec-2-3-1-1"></a>Satz 2.2 Produkte sind <i>bis auf Isomorphie</i> eindeutig:<br  /><div class="outline-text-5" id="text-2-3-1-1">
+<ul class="org-ul">
+<li>Seien (P, &pi;) und (P', &pi;') Produkte von A. Dann sind P und P' isomorph.
+</li>
+<li>Seien (P, &pi;) ein Produkt von A, P' eine Menge und h: P' &rarr; P eine bijektive Abbildung. Dann ist (P', &pi;') mit &pi;' = (&pi; . h)<sub>i\[ \in \]I</sub> ebenfalls ein Produkt von A.
+</li>
+</ul>
+
+
+<p>
+Die Funktion 
+</p>
+<div class="center">
+<p>
+&Pi;<sub>i\[ \in \]I</sub>f<sub>i</sub> =<sub>def</sub> \langle f<sub>i</sub> . &pi;<sub>i</sub> \rangle : P &rarr; P'  
+</p>
+</div>
+<p>
+hei"st <b>Produkt von f</b>.
+</p>
+
+<p>
+F"ur alle nichtleeren Mengen I,f: A &rarr; B und n &gt; 0,
+</p>
+
+<div class="center">
+<p>
+f<sup>I</sup> =<sub>def</sub> &Pi;<sub>i\[ \in \]I</sub> f<sub>i</sub>,  <br  />
+f<sub>1</sub> &times; .. &times; f<sub>n</sub> =<sub>def</sub> &Pi;<sub>i\[ \in \][n]</sub> f<sub>i</sub>.
+</p>
+</div>
+
+<p>
+F"ur alle f: A &rarr; B, (f<sub>i</sub>: B &rarr; B<sub>i</sub>)<sub>i\[ \in \]I</sub>, (g<sub>i</sub>: A<sub>i</sub> &rarr; B<sub>i</sub>)<sub>i\[ \in \]I</sub>, k&isin; I und (h<sub>i</sub>: B<sub>i</sub> &rarr; A<sub>i</sub>)<sub>i\[ \in \]I</sub>,
+</p>
+<div class="center">
+<p>
+\langle f<sub>i</sub> \rangle<sub>i\[ \in \]I</sub> . f = \langle f<sub>i</sub> . f \rangle<sub>i\[ \in \]I</sub>, <br  />
+&pi;<sub>k</sub> . &Pi;<sub>i\[ \in \]I</sub>g<sub>i</sub> = g<sub>k</sub> &pi;<sub>k</sub>, <br  />
+(&Pi;<sub>i\[ \in \]I</sub>h<sub>i</sub>) . \langle f<sub>i</sub> \rangle<sub>i\[ \in \]I</sub> = \langle h<sub>i</sub> . f<sub>i</sub> \rangle<sub>i\[ \in \]I</sub>. <br  />
+</p>
+</div>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2"><span class="section-number-4">2.3.2</span> Summe</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+Vom Produkt kommt man zur Summe, indem man alle Funktionspfeile umdreht:
+Sei A = (A<sub>i</sub>)<sub>i\[ \in \]I</sub> ein Mengentuple, S eine Menge und &iota; = (&iota;<sub>i</sub>: A<sub>i</sub> &rarr; S)<sub>i\[ \in \]I</sub> ein Funktionstuple.
+Das Paar (S, &iota;) hei"st <b>Summe</b> oder <b>Coprodukt von A</b>, wenn es f"ur alle Tuple (f<sub>i</sub>: A<sub>i</sub> &rarr; B)<sub>i\[ \in \]I</sub> <span class="underline">genau</span> eine Funktion
+f: S &rarr; B gibt mit 
+</p>
+<div class="center">
+<p>
+f . &iota;<sub>i</sub> = f<sub>i</sub>
+</p>
+</div>
+<p>
+f"ur alle i &isin; I. <br  />
+</p>
+
+<p>
+&iota;<sub>i</sub> hei"st i-te Injektion von S und g Summenextension oder Domain Tuplung von f. g wird mit [f<sub>i]</sub><sub>i\[ \in \]I</sub> und im Falle I = [n],
+n&gt;1, auch mit [f<sub>1</sub>,..,f<sub>n]</sub> bezeichnet. 
+</p>
+
+<p>
+Demnach gilt:
+</p>
+
+
+<div class="center">
+<p>
+(&forall; i&isin; I : f . &iota;<sub>i</sub> = g . &iota;<sub>i</sub>) &rArr; f = g
+</p>
+</div>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-3-2-1" name="sec-2-3-2-1"></a>Satz 2.3 Summen sind <i>bis auf Isomorphie</i> eindeutig:<br  /><div class="outline-text-5" id="text-2-3-2-1">
+<ul class="org-ul">
+<li>Seien (S, &iota;) und (S', &iota;') Summen von A. Dann sind P und P' isomorph.
+</li>
+<li>Sei (S, &iota;) eine Summe von A, S' eine Menge und h: S &rarr; S' eine bijektive Abbildung. Dann ist (S', &iota;') mit &iota;' = (h . &iota;<sub>i</sub>)<sub>i\[ \in \]I</sub> ebenfalls eine summe von A.
+</li>
+</ul>
+
+<p>
+Sei (S, &iota;) eine Summe von (A<sub>i</sub>)<sub>i\[ \in \]I</sub>, ein (S', &iota;') eine Summe von (B<sub>i</sub>)<sub>i\[ \in \]I</sub> und f = (f<sub>i</sub>: A<sub>i</sub> &rarr; B<sub>i</sub>)<sub>i\[ \in \]I</sub>
+Die Funktion
+</p>
+<div class="center">
+<p>
+\amalg<sub>i\[ \in \]I</sub>f<sub>i</sub> =<sub>def</sub> [&iota;<sub>i</sub>' . f<sub>i</sub>]: S &rarr; S' 
+</p>
+</div>
+<p>
+hei"st Summe von f.
+</p>
+
+
+<p>
+F"ur alle nichtleeren Mengen I,f: A &rarr; B und n&gt;0,
+</p>
+<div class="center">
+<p>
+f &times; I =<sub>def</sub> \amalg<sub>i\[ \in \]I</sub> f, <br  />
+f<sub>1</sub>+..+f<sub>n</sub> =<sub>def</sub> \amalg<sub>i\[ \in \][n]</sub> f<sub>i</sub>, <br  />
+f<sup>+</sup> =<sub>def</sub> \amalg<sub>n\[ \in \]\mathbb{N}</sub> f<sup>[n]</sup>, <br  />
+f<sup>*</sup> =<sub>def</sub> 1 + f<sup>+</sup> =<sub>def</sub> id<sub>1</sub> + f<sup>+</sup>. <br  />
+</p>
+</div>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Typen und Signaturen</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+Sei S eine Menge von - <b>Sorten</b> genannten - Symbolen.
+Die Klasse T<sub>p</sub>(S) der <b>polynomialen Typen "uber</b> S:
+</p>
+<ul class="org-ul">
+<li>S \subseteq T<sub>p</sub>(S)
+</li>
+<li>Jede nichtleere Menge ist ein polynomialer Typ
+</li>
+<li>F"ur alle nichtleeren Mengen I und (e<sub>i</sub>)<sub>i&isin; I</sub>&isin; T<sub>p</sub>(S)<sup>I</sup>, &Pi;<sub>i&isin; I</sub> e<sub>i</sub>, \amalg<sub>i&isin; I</sub>e<sub>i</sub> &isin; T<sub>p</sub>(S) 
+</li>
+</ul>
+
+
+<ul class="org-ul">
+<li>Ein Typ der Form &Pi;<sub>i&isin; I</sub>e<sub>i</sub> hei"st <b>I-stelliger Produkttyp</b> mit den <b>Faktoren</b> e<sub>i</sub>, i&isin; I.
+</li>
+<li>Ein Typ der Form \amalg<sub>i&isin; I</sub>e<sub>i</sub> hei"st <b>I-stelliger Summentyp</b> mit den <b>Summanden</b> e<sub>i</sub>, i&isin; I.
+</li>
+</ul>
+
+<p>
+F"ur alle n&gt;0, e<sub>1</sub>,..,e<sub>n</sub>, e&isin; T<sub>p</sub>(S) und nichtleere Mengen I,
+</p>
+<div class="center">
+<p>
+e<sub>1</sub> &times; .. &times; e<sub>n</sub> =<sub>def</sub> &Pi;<sub>i\[ \in \][n]</sub>e<sub>i</sub>, <br  />
+e<sub>1</sub> + .. + e<sub>n</sub> =<sub>def</sub> \amalg<sub>i\[ \in \][n]</sub>e<sub>i</sub>, <br  />
+e<sup>I</sup> =<sub>def</sub> &Pi;<sub>i\[ \in \]I</sub>e<sub>i</sub>, <br  />
+e<sup>n</sup> =<sub>def</sub> e<sup>[n]</sup>, <br  />
+e<sup>+</sup> =<sub>def</sub> \amalg<sub>n&gt;0</sub>e<sup>n</sup>, <br  />
+e<sup>*</sup> =<sub>def</sub> 1 + e<sup>+</sup>. <br  />
+</p>
+</div>
+
+<p>
+Eine S-sortige Menge A wird wie folgt zur T<sub>p</sub>(S)-sortigen Menge erweitert: F"ur alle nichtleeren Mengen I und (e<sub>i</sub>)<sub>i\[ \in \]I</sub>
+</p>
+
+<div class="center">
+<p>
+A<sub>I</sub> = I, <br  />
+A<sub>&Pi;<sub>i\[ \in \]I</sub>e<sub>i</sub></sub> = &times;<sub>i\[ \in \]I</sub> A<sub>e<sub>i</sub></sub>, <br  />
+A<sub>\amalg<sub>i\[ \in \]I</sub>e<sub>i</sub></sub> = \uplus<sub>i\[ \in \]I</sub> A<sub>e<sub>i</sub></sub>.
+</p>
+</div>
+
+<p>
+F"ur alle e &isin; T<sub>p</sub>(S) und a &isin; A<sub>e</sub> nennen wir e den Typen von a.
+</p>
+
+<p>
+Eine S-sortige Funktion h: A &rarr; B wird wie folgt zur T<sub>p</sub>(S)-sortigen Menge f"ur alle nichtleeren Mengen I und (e<sub>i</sub>)<sub>i \[ \in \]</sub> 
+&isin; T<sub>p</sub>(S)<sup>I</sup>.
+</p>
+
+<div class="center">
+<p>
+h<sub>I</sub> = id<sub>I</sub>, <br  />
+h<sub>&Pi;<sub>i \[ \in \]I</sub></sub> = &Pi;<sub>i\[ \in \]I</sub>h<sub>e<sub>i</sub></sub>, <br  />
+h<sub>\amalg<sub>i \[ \in \]I</sub></sub> = \amalg<sub>i\[ \in \]I</sub>h<sub>e<sub>i</sub></sub>.
+</p>
+</div>
+
+
+<p>
+F"ur alle S-sortigen Mengen A, S-sortige Funktionen h: A &rarr; B, n&gt;0, nichtleeren Menge I und e<sub>1</sub>,..e<sub>n</sub>, e &isin; T<sub>p</sub>(S) gilt Folgendes:
+</p>
+<div class="center">
+<p>
+A<sub>e<sub>1</sub> &times; .. &times; e<sub>n</sub></sub> = A<sub>e<sub>1</sub></sub> &times; .. &times; A<sub>e<sub>n</sub></sub>, <br  />
+A<sub>e<sub>1</sub> + .. + e<sub>n</sub></sub> = A<sub>e<sub>1</sub></sub> + .. + A<sub>e<sub>n</sub></sub>, <br  />
+A<sub>e<sup>I</sup></sub> = A<sup>I</sup><sub>e</sub>, <br  />
+A<sub>e<sup>n</sup></sub> = A<sup>n</sup><sub>e</sub>, <br  />
+A<sub>e<sup>+</sup></sub> = A<sup>+</sup><sub>e</sub>, <br  />
+A<sub>e<sup>*</sup></sub> = A<sup>*</sup><sub>e</sub>, <br  />
+</p>
+
+<p>
+h<sub>e<sub>1</sub> &times; .. &times; e<sub>n</sub></sub> = h<sub>e<sub>1</sub></sub> &times; .. &times; h<sub>e<sub>n</sub></sub>, <br  />
+h<sub>e<sub>1</sub> + .. + e<sub>n</sub></sub> = h<sub>e<sub>1</sub></sub> + .. + h<sub>e<sub>n</sub></sub>, <br  />
+h<sub>e<sup>I</sup></sub> = h<sup>I</sup><sub>e</sub>, <br  />
+h<sub>e<sup>n</sup></sub> = h<sup>[n]</sup><sub>e</sub>, <br  />
+h<sub>e<sup>+</sup></sub> = h<sup>+</sup><sub>e</sub>, <br  />
+h<sub>e<sup>*</sup></sub> = h<sup>*</sup><sub>e</sub>.
+</p>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Signaturen</h3>
+<div class="outline-text-3" id="text-2-5">
+<ul class="org-ul">
+<li>Eine <b>Signatur</b> &Sigma; = (S, F) besteht aus einer Menge S von Sorten wie oben sowie einer Menge F typisierter Funktionssymbole f: e &rarr; e' mit e, e' &isin; T<sub>p</sub>(S), den Operationen von &Sigma;.
+</li>
+<li>obs(&Sigma;): die Menge der <b>beobachtbaren Typen</b> (observable types) von &Sigma;, das sind alle nichtleeren Mengenm die in Typen von Operationen von &Sigma; vorkommen.
+</li>
+<li>&forall; f&isin; F : f: e &rarr; e', dom(f) = e und ran(f) = e'
+</li>
+<li>&Sigma; hei"st <b>Gentzen-Signatur</b>, falls &forall; f &isin; F Mengen I, J existieren sodass dom(f) ein I-stelliger Produkttyp und ran(f) ein J-stelliger Summentyp ist.
+</li>
+<li>Konsrtuktoren dienen der Synthese von Elementen einer S-sortigen Menge, Destruktoren liefern Werkzeuge zu ihrer Analyse.
+</li>
+<li>Abstrakte Syntax einer CFG ist eine konstruktive Signaturen
+</li>
+<li>Parser, Interpreter und Compiler beruhen auf Automatenmodelle, die destruktive Signaturen interpretieren
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-2-5-1" class="outline-4">
+<h4 id="sec-2-5-1"><span class="section-number-4">2.5.1</span> Konstruktive Signaturen</h4>
+<div class="outline-text-4" id="text-2-5-1">
+</div><ol class="org-ol"><li><a id="sec-2-5-1-1" name="sec-2-5-1-1"></a>Mon (&rArr; Unmarkierte bin"are B"aume)<br  /><div class="outline-text-5" id="text-2-5-1-1">
+<ul class="org-ul">
+<li>S = {mon}
+</li>
+<li>F = {one: 1 &rarr; mon, mul: mon &times; mon &rarr; mon}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-1-2" name="sec-2-5-1-2"></a>Nat (&rArr; N)<br  /><div class="outline-text-5" id="text-2-5-1-2">
+<ul class="org-ul">
+<li>S = {nat}
+</li>
+<li>F = {zero: 1 &rarr; nat, succ: nat &rarr; nat}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-1-3" name="sec-2-5-1-3"></a>Dyn(I, X) (&rArr; I &times; X<sup>*</sup>)<br  /><div class="outline-text-5" id="text-2-5-1-3">
+<ul class="org-ul">
+<li>S = {list}
+</li>
+<li>F = {nil: I &rarr; list. cons: X &times; list &rarr; list}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-1-4" name="sec-2-5-1-4"></a>List(X) =<sub>def</sub> Dyn(1, X) (&rArr; X<sup>*</sup>)<br  /></li>
+
+<li><a id="sec-2-5-1-5" name="sec-2-5-1-5"></a>Bintree(X) (&rArr; bin"are B"aume endlicher Tiefe mit Knotenmarkierungen aus X)<br  /><div class="outline-text-5" id="text-2-5-1-5">
+<ul class="org-ul">
+<li>S = {btree}
+</li>
+<li>F = {empty: 1 &rarr; btree, bjoin: btree &times; X &times; btree &rarr; btree}
+</li>
+</ul>
+</div>
+</li>
+
+
+<li><a id="sec-2-5-1-6" name="sec-2-5-1-6"></a>Tree(X) (&rArr; B"aume endlicher Tiefe und endlichen Knotenausgrads mit Knotenmarkierungen aus X)<br  /><div class="outline-text-5" id="text-2-5-1-6">
+<ul class="org-ul">
+<li>S = {tree, trees}
+</li>
+<li>F = {join: X &times; trees &rarr; tree, nil: 1 &rarr; trees, cons: tree &times; trees &rarr; trees}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-1-7" name="sec-2-5-1-7"></a>Reg(BL) (&rArr; regul"are Ausdr"ucke "uber BL)<br  /><div class="outline-text-5" id="text-2-5-1-7">
+<ul class="org-ul">
+<li>S = {reg}
+</li>
+<li>F = {par: reg &times; reg &rarr; reg, seq: reg &times; reg &rarr; reg, iter: reg &rarr; reg, base: BL &rarr; reg}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-1-8" name="sec-2-5-1-8"></a>CCS(Act) (&rArr; Calculus of Communicating Systems)<br  /><div class="outline-text-5" id="text-2-5-1-8">
+<ul class="org-ul">
+<li>S = {proc}
+</li>
+<li>F = { pre: Act &times; proc &rarr; proc, cho: proc &times; proc &rarr; proc, par: proc &times; proc &rarr; proc, res: proc &times; Act &rarr; proc, rel: proc &times; Act<sup>Act</sup> &rarr; proc}
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+
+
+<div id="outline-container-sec-2-5-2" class="outline-4">
+<h4 id="sec-2-5-2"><span class="section-number-4">2.5.2</span> Destruktive Signaturen</h4>
+<div class="outline-text-4" id="text-2-5-2">
+</div><ol class="org-ol"><li><a id="sec-2-5-2-1" name="sec-2-5-2-1"></a>coNat (&rArr; N &cup; {&infin;})<br  /><div class="outline-text-5" id="text-2-5-2-1">
+<ul class="org-ul">
+<li>S = {nat}
+</li>
+<li>F = {pred: nat &rarr; 1 + nat}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-2-2" name="sec-2-5-2-2"></a>coList(X) (&rArr; X<sup>*</sup> &cup; X<sup>N</sup> (coList(1) &cong; coNat))<br  /><div class="outline-text-5" id="text-2-5-2-2">
+<ul class="org-ul">
+<li>S = {list, X &times; list}
+</li>
+<li>F = {split: list &rarr; 1+ X &times; list, &pi;<sub>1</sub>: X &times; list &rarr; X, &pi;<sub>2</sub>: X &times; list &rarr; list}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-2-3" name="sec-2-5-2-3"></a>Stream(X) =<sub>def</sub> DAut(1, X) (&rArr; X<sup>N</sup>)<br  /><div class="outline-text-5" id="text-2-5-2-3">
+<ul class="org-ul">
+<li>S = {list}
+</li>
+<li>F = {head: list &rarr; X, tail: list &rarr; list}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-2-4" name="sec-2-5-2-4"></a>coBintree(X) (&rArr; bin"are B"aume beliebiger Tiefe mit Knotenmarkierungen aus X)<br  /><div class="outline-text-5" id="text-2-5-2-4">
+<ul class="org-ul">
+<li>S = {btree, btree &times; X &times; btree}
+</li>
+<li>F = {split: btree &rarr; 1 + btree &times; X &times; btree, &pi;<sub>1</sub>: btree &times; X &times; btree &rarr; btree, &pi;<sub>2</sub>: btree &times; X &times; btree &rarr; X, &pi;<sub>3</sub>: btree &times; X &times; btree &rarr; btree}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-2-5" name="sec-2-5-2-5"></a>Infbintree(X) (&rArr; bin"are B"aume unendlicher Tiefe mit Knotenmarkierungen aus X)<br  /><div class="outline-text-5" id="text-2-5-2-5">
+<ul class="org-ul">
+<li>S = {btree}
+</li>
+<li>F = {root: btree &rarr; X, left, right:btree &rarr; btree}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-2-6" name="sec-2-5-2-6"></a>DAut(X,Y) (&rArr; Y<sup>X<sup>*</sup></sup> = Verhalten det. Moore-Automaten mit Eingabemenge X und Ausgabemenge Y)<br  /><div class="outline-text-5" id="text-2-5-2-6">
+<ul class="org-ul">
+<li>S = {state, state<sup>X</sup>}
+</li>
+<li>F = {&delta;: state &rarr; state<sup>X</sup>, &beta;: state &rarr; Y} &cup; {&pi;<sub>x</sub>: state<sup>X</sup> &rarr; state | x&isin; X}
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-5-2-7" name="sec-2-5-2-7"></a>Acc(X) =<sub>def</sub> DAut(X,2) (&rArr; P(X<sup>*</sup>) = Wortsprache "uber X)<br  /></li>
+
+<li><a id="sec-2-5-2-8" name="sec-2-5-2-8"></a>Proctree(Act) (&rArr; Prozessb"aume, deren Kanten mit Aktionen markiert sind)<br  /><div class="outline-text-5" id="text-2-5-2-8">
+<ul class="org-ul">
+<li>S = {tree} &cup; {(Act &times; tree)<sup>n</sup> | n &gt; 0}
+</li>
+<li>F = {&delta;: tree &rarr; (Act &times; tree)<sup>*</sup>} &cup; {&pi;<sub>n</sub>: (Act &times; tree)<sup>n</sup> &rarr; Act &times; tree | n &gt; 0} &cup; {&pi;<sub>1</sub>: Act &times; tree &rarr; Act, &pi;<sub>2</sub>: Act &times; tree &rarr; tree}
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Algebren</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+Sei &Sigma; = (S, F) eine Signatur. Eine &Sigma;- <b>Algebra</b> A = (A, Op) besteht aus einer S-sortigen Menge A und einer F-sortigen Menge
+</p>
+<div class="center">
+<p>
+Op = (f<sup>A</sup>: A<sub>e</sub> &rarr; A<sub>e'</sub>)<sub>f: e\[ \to \]e'\[ \in \]F</sub>
+</p>
+</div>
+<p>
+von Funktionen, den Operationen von A.
+F"ur alle s &isin; S hei"st A<sub>s</sub> Tr"agermenge (carrier set) oder Interpretation von s in A. F"ur alle f: e &rarr; e' &isin; F hei"st f<sup>A</sup> : A<sub>e</sub> &rarr; A<sub>e'</sub> Interpreation von f in A.
+</p>
+
+<p>
+Seien A, B &Sigma;-Algebren. Eine S-sortige Funktion h: A &rarr; B hei"st &Sigma;-Homomorphismus, wenn f"ur alle f: e &rarr; e' &isin; F
+</p>
+<div class="center">
+<p>
+h<sub>e'</sub> \bigcirc f<sup>A</sup> = f<sup>B</sup> \bigcirc h<sub>e</sub>
+</p>
+</div>
+<p>
+gilt. Ist h bijektiv, dann hei"st h &Sigma;-Isomorphismus und A und B sind &Sigma;-isomorph. h induziert die Bildalgebra h(A):
+</p>
+<ul class="org-ul">
+<li>F"ur alle e&isin; T<sub>p</sub>(S), h(A)<sub>e</sub> =<sub>def</sub> h<sub>e</sub>(A<sub>e</sub>)
+</li>
+<li>F"ur alle f: e&rarr; e' &isin; F und a &isin; A<sub>e</sub>, f<sup>h(A)</sup>(h(a)) =<sub>def</sub> f<sup>B</sup>(h(a))
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-2-6-1" class="outline-4">
+<h4 id="sec-2-6-1"><span class="section-number-4">2.6.1</span> Beispiele</h4>
+<div class="outline-text-4" id="text-2-6-1">
+</div><ol class="org-ol"><li><a id="sec-2-6-1-1" name="sec-2-6-1-1"></a>Nat-Algebra<br  /><div class="outline-text-5" id="text-2-6-1-1">
+<ul class="org-ul">
+<li>zero<sup>N</sup>: 1 &rarr; N, succ<sup>N</sup>: N &rarr; N
+</li>
+<li>zreo<sup>N</sup>(&epsilon;) = 0, succ<sup>N</sup>(n) = n + 1
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2-6-1-2" name="sec-2-6-1-2"></a>Word(X) (eine Mon-Algebra)<br  /><div class="outline-text-5" id="text-2-6-1-2">
+<ul class="org-ul">
+<li>one<sup>Word(X)</sup>: 1 &rarr; X<sup>*</sup>, mul<sup>Word(X)</sup>: X<sup>*</sup> &times; X<sup>*</sup> &rarr; X<sup>*</sup>
+</li>
+<li>one<sup>Word(X)</sup>(&epsilon;) = &epsilon;, mult<sup>Word(X)</sup>(u, v) = uv 
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7"><span class="section-number-3">2.7</span> Terme und Coterme</h3>
+<div class="outline-text-3" id="text-2-7">
+</div><div id="outline-container-sec-2-7-1" class="outline-4">
+<h4 id="sec-2-7-1"><span class="section-number-4">2.7.1</span> Terme</h4>
+<div class="outline-text-4" id="text-2-7-1">
+<p>
+Sei &Sigma; = (S,C) eine konstruktive Signatur, X = &cup; obs(&Sigma;) und V eine S-sortige Menge von "Variablen".
+Die Menge CT<sub>&Sigma;</sub>(V) der &Sigma;-Terme "uber V ist die gr"o"ste (S &cup; obs(&Sigma;))-sortige Menge M  det. B"aume "uber (X, C &cup; X &cup; V)
+mit folgenden Eigenschaften:
+</p>
+
+<ul class="org-ul">
+<li>F"ur alle B &isin; obs(&Sigma;), M<sub>B</sub> = B (1)
+</li>
+<li>F"ur alle s &isin; S und t &isin; M<sub>s</sub> ist t &isin; V<sub>s</sub> (2) oder gibt es c: &Pi;<sub>i\[ \in \]I</sub>s<sub>i</sub> &rarr; s &isin; C und (t<sub>i</sub>)<sub>i\[ \in \]I</sub> &isin; &times;<sub>i\[ \in \]I</sub>M<sub>s<sub>i</sub></sub> mit t = c{i &rarr; t<sub>i</sub> | i &isin; I} (3)
+</li>
+</ul>
+</div>
+
+
+
+
+<ol class="org-ol"><li><a id="sec-2-7-1-1" name="sec-2-7-1-1"></a>Fall<br  /><div class="outline-text-5" id="text-2-7-1-1">
+<p>
+\\ 
+\Tree [.b ] <br  />
+b &isin; B, 
+B &isin; obs(&Sigma;) <br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-7-1-2" name="sec-2-7-1-2"></a>Fall<br  /><div class="outline-text-5" id="text-2-7-1-2">
+<p>
+\\
+\Tree [.x ] <br  />
+x ist von s, s &isin; S, x &isin; V<sub>s</sub> 
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-7-1-3" name="sec-2-7-1-3"></a>Fall<br  /><div class="outline-text-5" id="text-2-7-1-3">
+<p>
+\\
+\Tree [.c \ldots <br  />
+          \ldots <br  />
+          \ldots <br  />
+          [.i s<sub>i</sub> ]
+          \ldots \\ ]
+</p>
+
+<p>
+c: &Pi;<sub>i\[ \in \]I</sub> s<sub>i</sub> &rarr; s &isin; C
+</p>
+
+
+<ul class="org-ul">
+<li>Die Elemente von CT<sub>&Sigma;</sub> =<sub>def</sub> CT<sub>&Sigma;</sub>(&lambda; x. &empty;) hei"sen &Sigma;-Grundterme.
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-2-7-2" class="outline-4">
+<h4 id="sec-2-7-2"><span class="section-number-4">2.7.2</span> Coterme</h4>
+<div class="outline-text-4" id="text-2-7-2">
+<p>
+Sei &Sigma; = (S, D) eine destruktive Signatur und V eine S-sortige Menge von Farbe oder Covariablen.
+</p>
+
+<p>
+Die Menge DT<sub>&Sigma;</sub>(V) der &Sigma;-Coterme "uber V ist die gr"o"ste Menge (S &cup; obs(&Sigma;))-sortige Menge M det. B"aume "uber (D &cup; {!}, X &cup; V) mit (1) und folgender Eigenschaft
+</p>
+<ul class="org-ul">
+<li>F"ur alle s &isin; S, t &isin; M<sub>s</sub>, d: s &rarr; \amalg<sub>i\[ \in \]I</sub>s<sub>i</sub> &isin; D gibt es x &isin; V<sub>s</sub>, i<sub>d</sub> &isin; I und t<sub>d</sub> &isin; M<sub>s<sub>i</sub></sub> mit t =x{d &rarr; i{! &rarr; t<sub>d</sub>} | d: s &rarr; e &isin; D}
+</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-7-2-1" name="sec-2-7-2-1"></a>Fall<br  /><div class="outline-text-5" id="text-2-7-2-1">
+<p>
+\\ 
+\Tree [.b ] <br  />
+b &isin; B, 
+B &isin; obs(&Sigma;) <br  />
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-7-2-2" name="sec-2-7-2-2"></a>Fall<br  /><div class="outline-text-5" id="text-2-7-2-2">
+<p>
+\\
+\Tree [.x \ldots <br  />
+          \ldots <br  />
+          \ldots <br  />
+          [.i s<sub>i</sub> ]
+          \ldots \\ ]
+</p>
+
+<p>
+x &isin; V<sub>s</sub>
+c: s &rarr; \amalg<sub>i\[ \in \]I</sub> s<sub>i</sub>  &isin; D
+</p>
+
+<p>
+Ist I einelementig, dann stimmt \amalg<sub>i\[ \in \]I</sub>s<sub>i</sub> mit s<sub>i</sub> "uberein, so dass die mit ! markierte Kante entf"allt.
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2-8" class="outline-3">
+<h3 id="sec-2-8"><span class="section-number-3">2.8</span> <i>Bool</i>-Algebra</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+Die Menge 2 ist Tr"agermenge der REG(BL)-Algebra <i>Bool</i>.
+</p>
+
+<p>
+F"ur alle x, y &isin; 2 und B &isin; BL \ 1:
+</p>
+<div class="center">
+<p>
+par<sup>Bool</sup>(x, y) = max{x,y}, <br  />
+seq<sup>Bool</sup>(x, y) = x*y, <br  />
+iter<sup>Bool</sup>(x) = 1, <br  />
+base<sup>Bool</sup>(1) = 1, <br  />
+bas<sup>Bool</sup>(B) = 0. <br  />
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-9" class="outline-3">
+<h3 id="sec-2-9"><span class="section-number-3">2.9</span> Termfaltung</h3>
+<div class="outline-text-3" id="text-2-9">
+<ul class="org-ul">
+<li>&Sigma; = (S, C)
+</li>
+<li>V eine S-sortige Menge 
+</li>
+<li>A = (A, Op) eine &Sigma;-Algebra
+</li>
+<li>g: V &rarr; A eine <b>Variablenbelegung</b> (<i>valuation</i>)
+</li>
+<li>g<sup>*</sup> intuitiv definiert.
+</li>
+</ul>
+
+
+<p>
+Offenbar h"angt die Einschr"ankung von g* auf Grundterme nicht von g ab. Sie wird <b>Termfaltung</b> genannt und mit fold<sup>A</sup> bezeichnet.
+</p>
+
+<p>
+Folglich ist fold<sup>A</sup> der einzige &Sigma;-Homomorphismus von T<sub>&Sigma;</sub> nach A
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-10" class="outline-3">
+<h3 id="sec-2-10"><span class="section-number-3">2.10</span> Zustandsentfaltung</h3>
+<div class="outline-text-3" id="text-2-10">
+<ul class="org-ul">
+<li>&Sigma; = (S, D) 
+</li>
+<li>V eine S-sortige Menge 
+</li>
+<li>A = (A, Op) eine &Sigma;-Algebra
+</li>
+<li>g: A &rarr; V eine F"arbung
+</li>
+<li>g<sup>#</sup> intuitiv definiert
+</li>
+</ul>
+
+<p>
+Offenbar h"angt die Einschr"ankung von g<sup>#</sup> auf Grundterme nicht von g ab. Sie wird <b>Zustandsentfaltung</b> genannt und mit unfold<sup>A</sup> bezeichnet.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Rechnen mit Algebren</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Unteralgebra</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Bez"uglich der Operationen geschlossene Untermenge.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Substitution</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+&sigma;<sup>*</sup>: T<sub>&Sigma;</sub>(V) &rarr; T<sub>&Sigma;</sub>(V)
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Term"aquivalenz</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+&forall; t,t' &isin; E, g &isin; A<sup>V</sup> : g<sup>*</sup>(t) = g<sup>*</sup>(t')
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Normalformen</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Werden f"ur jede Signatur selbst definiert und k"onnen durch das verwenden definierter Gleichungen erzeugt Werden
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Kontextfreie Grammatiken (CFGs)</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Definition</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+G = (S, BS, R) mit 
+</p>
+
+<ul class="org-ul">
+<li>einer endlichen Menge S von <b>Sorten</b>, die auch Nichtterminale oder Variablen genannt werden 
+</li>
+<li>BS, eine Menge nichtleerer Basismengen 
+</li>
+<li>eine endliche Menge R von Regeln s &rarr; w mit s &isin; S und \\ w &isin; (S &cup; BS)<sup>*</sup> \ {s} 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Die JavaLight Grammatik</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-sec-4-2-1" class="outline-4">
+<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> R</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<ul class="org-ul">
+<li>Commands &rarr; Command Commands | Command 
+</li>
+<li>Command &rarr; {Commands} | String = Sum; | \\ if Disjunct Command else Command | \\ if Disjunct Command | while Disjunct Command
+</li>
+<li>Sum &rarr; Sum + Prod | Sum - Prod | Prod 
+</li>
+<li>Prod &rarr; Prod * Factor | Prod/Factor | Factor
+</li>
+<li>Factor &rarr; Z | String | (Sum)
+</li>
+<li>Disjunct &rarr; Conjunct || Disjunct | Conjunct
+</li>
+<li>Conjunct &rarr; Literal &amp;&amp; Conjunct | Literal
+</li>
+<li>Literal &rarr; !Literal | Sum Rel Sum | 2 | (Disjunct)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2-2" class="outline-4">
+<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> BS</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<ul class="org-ul">
+<li>String (alle Zeichenfolgen au"ser Elementen anderer Basismengen von JavaLight)
+</li>
+<li>Z
+</li>
+<li>Rel (nicht n"aher spezifizierter bin"arer Relationen auf Z
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Beispiel Programm</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+fact = 1; while x &gt; 1 {fact = fact*x; x = x-1;}
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Linksrekursive Grammatiken</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+Sei G = (S, BS, R) und X = &cup; BS. 
+</p>
+
+<p>
+X ist die Menge der Eingabesymbole, die Compiler f"ur G verarbeiten m"ussen.
+</p>
+</div>
+
+<div id="outline-container-sec-4-4-1" class="outline-4">
+<h4 id="sec-4-4-1"><span class="section-number-4">4.4.1</span> Einschub Ableitungsrelation</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<p>
+&rarr;<sub>G</sub> = {(vsw, v&alpha; w), s &rarr; &alpha; &isin; R, v,w &isin; (S &cup; BS)<sup>*</sup>}.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-4-2" class="outline-4">
+<h4 id="sec-4-4-2"><span class="section-number-4">4.4.2</span> Definition</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<ul class="org-ul">
+<li>G hei"st <b>linksrekursiv</b>, falls es eine <b>linkrekursive</b> Ableitung s &rarr;<sub>G</sub> sv gibt. 
+</li>
+<li>G hei"st LL-kompilierbar, falls es eine partielle Ordnung &le; auf S gibt mit s' &le; s f"ur alle Ableitungen sv &rarr;<sub>G</sub> s'w
+</li>
+</ul>
+</div>
+<ol class="org-ol"><li><a id="sec-4-4-2-1" name="sec-4-4-2-1"></a>Umgangssprachlich<br  /><div class="outline-text-5" id="text-4-4-2-1">
+<p>
+Man hat eine Regel, sodass die Sorte auf der linken Seite auf der rechten Seite ganz links vorkommt.
+</p>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-4-4-3" class="outline-4">
+<h4 id="sec-4-4-3"><span class="section-number-4">4.4.3</span> Beispiel</h4>
+<div class="outline-text-4" id="text-4-4-3">
+<p>
+Z.B. REG ist LL-kompilierbar, JavaLight jedoch <span class="underline">nicht</span>. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4-4" class="outline-4">
+<h4 id="sec-4-4-4"><span class="section-number-4">4.4.4</span> Verfahren zur Elemenierung von Linksrekursion</h4>
+<div class="outline-text-4" id="text-4-4-4">
+<p>
+Sei G = (S, BS, R) und S = {s<sub>1</sub>,..,s<sub>n</sub>}.
+</p>
+
+<p>
+F"uhre f"ur alle 1 &le; i &le; n die beiden folgenden Schritte in der angegebenen Reihenfolge durch:
+</p>
+
+<ul class="org-ul">
+<li>F"ur alle 1 &le; j &le; i und Regelpaare (s<sub>i</sub> &rarr; s<sub>j</sub>v, s<sub>j</sub> &rarr; w) ersetze dir Regel s<sub>i</sub> &rarr; s<sub>j</sub>v durch s<sub>i</sub> &rarr; wv
+</li>
+<li>Falls vorhanden, streiche die Regel s<sub>i</sub> &rarr; s<sub>i</sub>
+</li>
+<li>F"ur alle Regelpaare (s<sub>i</sub> &rarr; v, s<sub>i</sub> &rarr; s<sub>i</sub>w) mit &notin; {s<sub>i</sub>} &times; (S &cup; BS)<sup>*</sup> ersetze die beiden Regeln durch die drei neuen Regeln s<sub>i</sub> &rarr; vs'<sub>i</sub>, s'<sub>i</sub> &rarr; ws'<sub>i</sub> und s'<sub>i</sub> &rarr; &epsilon;
+</li>
+</ul>
+</div>
+
+
+<ol class="org-ol"><li><a id="sec-4-4-4-1" name="sec-4-4-4-1"></a>Beispiel JavaLight<br  /><div class="outline-text-5" id="text-4-4-4-1">
+<ul class="org-ul">
+<li>Commands &rarr; Command Commands | Command 
+</li>
+<li>Command &rarr; {Commands} | String = Sum; | \\ if Disjunct Command else Command | \\ if Disjunct Command | while Disjunct Command
+</li>
+<li>Sum &rarr; Prod Sumsect
+</li>
+<li>Sumsect &rarr; + Prod Sumsect | - Prod Sumsect | &epsilon;  
+</li>
+<li>Prod &rarr; Factor Prodsect
+</li>
+<li>Prodsect &rarr; * Factor Prodsect | / Factor Prodsect | &epsilon;
+</li>
+<li>Factor &rarr; Z | String | (Sum)
+</li>
+<li>Disjunct &rarr; Conjunct || Disjunct | Conjunct
+</li>
+<li>Conjunct &rarr; Literal &amp;&amp; Conjunct | Literal
+</li>
+<li>Literal &rarr; !Literal | Sum Rel Sum | 2 | (Disjunct)
+</li>
+</ul>
+</div>
+</li></ol>
+</div>
+</div>
+
+
+
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Abstrakte Syntax</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+Sei G = (S, BS, R) eine CFG.
+</p>
+
+<p>
+Die folgende Funktion typ: (S &cup; BS)<sup>*</sup> &rarr; T<sub>p</sub>(S) streicht alle Elemente von Z(G) aus W"ortern "uber S &cup; BS und "uberf"uhrt diese
+in die durch sie bezeichneten Produkttypen:
+</p>
+
+<ul class="org-ul">
+<li>typ(&epsilon;) = 1
+</li>
+<li>F"ur alle s &isin; S &cup; BS \ Z(G) und w &isin; (S &cup; BS)<sup>*</sup>, typ(sw) = s &times; typ(w)
+</li>
+<li>F"ur alle x &isin; Z und w &isin; (S &cup; BS)<sup>*</sup>, typ(xw) = typ(w)
+</li>
+</ul>
+
+<p>
+Dann ist &Sigma;(G) = (S, BS, {f<sub>s &rarr; w</sub>:typ(w) &rarr; s | s &rarr; w &isin; R})
+</p>
+
+
+<p>
+&Sigma;(G)-Grundterme werden Syntaxb"aume von G genannt.
+</p>
+</div>
+
+<div id="outline-container-sec-4-5-1" class="outline-4">
+<h4 id="sec-4-5-1"><span class="section-number-4">4.5.1</span> Beispiel JavaLight</h4>
+<div class="outline-text-4" id="text-4-5-1">
+<ul class="org-ul">
+<li>S = {Commands, Command, Sum, Prod, Factor, Disjunct, Conjunct, Literal}
+</li>
+<li>&Iota; = {Z, String, Rel, 2}
+</li>
+<li>F = { \\ seq: Command &times; Commands &rarr; Commands, \\ embed: Command &rarr; Commands, \\ block: Commands &rarr; Command, \\ assign: String &times; Sum &rarr; Command, \\ cond: Disjunct &times; Command &times; Command &rarr; Command, \\ cond1, loop: Disjunct &times; Command &rarr; Command, \\ <span class="underline">sum</span>: Prod &rarr; Sum, \\ <span class="underline">plus</span>, <span class="underline">minus</span>: Sum &times; Prod &rarr; Sum, \\ <span class="underline">prod</span>: Factor &rarr; Prod, \\ <span class="underline">times</span>, <span class="underline">div</span>: Prod &times; Factor &rarr; Prod, \\ embedI: Z &rarr; Factor, \\ var: String &rarr; Factor, \\ encloseS: Sum &rarr; Factor, \\ disjunct: Conjunct &times; Disjunct &rarr; Disjunct, \\ embedC: Conjunct &rarr; Disjunct, \\ conjunct: Literal &times; Conjunct &rarr; Conjunct, \\ embedL: Literal &rarr; Conjunct, \\ not: Literal &rarr; Literal, \\ atom: Rel &times; Sum &times; Sum &rarr; Literal, \\ embedB: 2 &rarr; Literal, \\ encloseD: Disjunct &rarr; Literal}
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-5-2" class="outline-4">
+<h4 id="sec-4-5-2"><span class="section-number-4">4.5.2</span> JavaLight' (entlinksrekursiv)</h4>
+<div class="outline-text-4" id="text-4-5-2">
+<ul class="org-ul">
+<li>wird um die Sorten Sumsect und Prodsect erweitert und um die Konstruktoren 
+</li>
+<li>sum: Prod &times; Sumsect &rarr; Sum, \\ plus, minus: Prod &times; Sumsect &rarr; Sumsect, \\ nilS: 1 &rarr; Sumsect, \\ prod: Factor &times; Prodsect &rarr; Prod, \\ times, div: Factor &times; Prodsect &rarr; Prodsect, \\ nilP: 1 &rarr; Prodsect
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-5-3" class="outline-4">
+<h4 id="sec-4-5-3"><span class="section-number-4">4.5.3</span> Syntaxbaum Beispiel</h4>
+<div class="outline-text-4" id="text-4-5-3">
+<p>
+Beispiel Programm:
+</p>
+<ul class="org-ul">
+<li>fact = 1; while x &gt; 1 {fact = fact*x; x = x-1;}
+</li>
+</ul>
+
+\begin{tikzpicture}[grow'=right, level distance=0.6in]
+\Tree [.Seq 
+            [.Assign fact 
+                          [.Sum 
+                                [.Prod 
+                                       [.EmbedI 1 ] 
+                                       NilP ]
+                                NilS ]]
+            [.Embed 
+                    [.Loop
+                           [.EmbedC 
+                                    [.EmbedL 
+                                             [.Atom > 
+                                                    [.Sum 
+                                                          [.Prod 
+                                                                 [.Var x ]
+                                                                 [.NilP ]]
+                                                          [.NilS ]]
+                                                    [.Sum 
+                                                          [.Prod 
+                                                                 [.EmbedI 1 ]
+                                                                 [.NilP ]]
+                                                          [.NilS ]]]]]
+                    [.Block 
+                            [.Seq 
+                                  [.Assign
+                                           fact 
+                                           [.Sum 
+                                                 [.Prod 
+                                                        [.Var fact ]
+                                                        [.Times 
+                                                                [.Var x ]
+                                                                [.NilP ]]]
+                                                 [.NilS ]]]
+                                  [.Embed 
+                                          [.Assign
+                                                   x
+                                                   [.Sum 
+                                                         [.Prod
+                                                                [.Var x ]
+                                                                [.NilP ]]
+                                                         [.Minus 
+                                                                 [.Prod
+                                                                        [.EmbedI 1 ]
+                                                                        [.NilP ]]
+                                                                 [.NilS ]]]]]]]]]]
+\end{tikzpicture}
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Definition derec(G)</h3>
+<div class="outline-text-3" id="text-4-6">
+<ul class="org-ul">
+<li>F"ur alle s &isin; S &cup; BS \ Z(G), derec(G)<sub>s</sub> = T<sub>&Sigma;(G'),s</sub>
+</li>
+<li>F"ur alle s &isin; S \ recs(S) und s &rarr; v &isin; R und t &isin; T<sub>&Sigma;(G'),typ(v)</sub>, f<sub>s &rarr; v</sub><sup>derec(G)</sup>(t) = f<sub>s &rarr; v</sub>(t)
+</li>
+<li>F"ur alle s &rarr; v &isin; nonrecs(R), s &rarr; sw &isin; R, t &isin; T<sub>&Sigma;(G'),typ(v)</sub>, t' &isin; T<sub>&Sigma;(G'),s'</sub> und u &isin; T<sub>&Sigma;(G'), typ(w)</sub> \\ f<sub>s &rarr; v</sub><sup>derec(G)</sup>(t) = f<sub>s &rarr; vs'</sub>(t, f<sub>s' &rarr; &epsilon;</sub>) \\ f<sub>s &rarr; sw</sub><sup>derec(G)</sup>(f<sub>s &rarr; vs'</sub>(t,t'),u) = f<sub>s &rarr; vs'</sub>(t, f<sub>s' &rarr; ws'</sub>(u, t')) 
+</li>
+</ul>
+
+<p>
+Mit derec(G) kann man eine Syntaxbaum in G in einen Syntaxbaum der nicht linksrekursiven Grammatik G' umwandeln
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Wort- und Ableitungsbaumalgebra</h3>
+<div class="outline-text-3" id="text-4-7">
+<p>
+Neben T<sub>&Sigma;(g)</sub> lassen sich auch die Menge der W"orter "uber X und die Menge der Ableitungsb"aume von G zu &Sigma;(G)-Algebren erweitern.
+</p>
+</div>
+
+<div id="outline-container-sec-4-7-1" class="outline-4">
+<h4 id="sec-4-7-1"><span class="section-number-4">4.7.1</span> Wortalgebra</h4>
+<div class="outline-text-4" id="text-4-7-1">
+<p>
+fold<sup>Word(G)</sup> bildet Terme auf die entsprechenden W"orter der Sprache. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-7-2" class="outline-4">
+<h4 id="sec-4-7-2"><span class="section-number-4">4.7.2</span> Ableitungsbaumalgebra</h4>
+<div class="outline-text-4" id="text-4-7-2">
+<p>
+Bildet auf einen Baum ab, der auch die W"orter darstellt (inklusive der Terminale aus Z(G))
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-8" class="outline-3">
+<h3 id="sec-4-8"><span class="section-number-3">4.8</span> Zustandsmodell von JavaLight</h3>
+<div class="outline-text-3" id="text-4-8">
+<ul class="org-ul">
+<li>Sei Store = String &rarr; Z (Variablenbelegung)
+</li>
+
+<li>Wir bilden eine &Sigma;(JavaLight)-Algebra
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-4-8-1" class="outline-4">
+<h4 id="sec-4-8-1"><span class="section-number-4">4.8.1</span> Sorten</h4>
+<div class="outline-text-4" id="text-4-8-1">
+<ul class="org-ul">
+<li>A<sub>Commands</sub> = A<sub>Command</sub> = Store &rarr; Store 
+</li>
+<li>A<sub>Sum</sub> = A<sub>Factor</sub> = A<sub>Prod</sub> = Store &rarr; Z 
+</li>
+<li>A<sub>Disjunkt</sub> = A<sub>Conjunct</sub> = A<sub>Literal</sub> = Store &rarr; 2
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-8-2" class="outline-4">
+<h4 id="sec-4-8-2"><span class="section-number-4">4.8.2</span> Operationen</h4>
+<div class="outline-text-4" id="text-4-8-2">
+<p>
+F"ur alle f,g: Store &rarr; Store, x &isin; Store, e: Store &isin; Z, st &isin; Store \\ und p: Store &rarr; 2.
+</p>
+
+<div class="center">
+<p>
+seq<sup>A</sup>(f, g) = g . f, <br  />
+embed<sup>A</sup>(f) = block<sup>A</sup>(f) = f, <br  />
+assign<sup>A</sup>(x,e)(st) = st[e(st)/x], <br  />
+cond<sup>A</sup>(p, f, g)(st) = if p(st) then f(st) else g(st), <br  />
+cond1<sup>A</sup>(p, f)(st) = if p(st) then f(st) else st, <br  />
+loop<sup>A</sup>(p, f)(st) = if p(st) then loop(p, f)(f(st)) else st. <br  />
+</p>
+</div>
+
+<p>
+F"ur alle f,g: Store &rarr; Z, x &isin; String und i &isin; Z
+</p>
+
+<div class="center">
+<p>
+sum<sup>A</sup>(f) = prod<sup>A</sup>(f) = f, <br  />
+plus<sup>A</sup>(f, g) = list<sup>Store</sup>(+)(f, g) = &lambda; st. f(st) + g(st), <br  />
+minus<sup>A</sup>(f, g) = list<sup>Store</sup>(-)(f, g) = &lambda; st. f(st) - g(st), <br  />
+times<sup>A</sup>(f, g) = list<sup>Store</sup>(*)(f, g) = &lambda; st. f(st) * g(st), <br  />
+div<sup>A</sup>(f, g) = list<sup>Store</sup>(/)(f, g) = &lambda; st. f(st) / g(st), <br  />
+embedI(i)(st) = i, <br  />
+var(x)(st) = st(x), <br  />
+encloseS<sup>A</sup>(f) = f.
+</p>
+</div>
+
+<p>
+F"ur alle f, g: Store &rarr; 2, rel &isin; Rel, e, e': Store &rarr; Z, b &isin; 2,
+</p>
+
+<div class="center">
+<p>
+disjunct<sup>A</sup>(f, g) = lift<sup>Store</sup>(&or;)(f,g) = &lambda; st. f(st) &or; g(st), <br  />
+conjunct<sup>A</sup>(f, g) = lift<sup>Store</sup>(&and;)(f,g) = &lambda; st. f(st) &and; g(st), <br  />
+atom<sup>A</sup>(rel, e, e') = lift<sup>Store</sup>(rel)(e,e') = &lambda; st. e(st) rel e'(st), <br  />
+embedC<sup>A</sup>(f) = embedL<sup>A</sup>(f) = encloseD<sup>A</sup>(f) = f, <br  />
+not<sup>A</sup>(f) = &not; . f, <br  />
+embedB<sup>A</sup>(b)(st) = b.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Parser und Compiler f"ur CFGs</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+T<sub>&Sigma;(G)</sub> \xrightarrow{fold^Z} Z \xrightarrow{evaluate} Mach <br  />
+T<sub>&Sigma;(G)</sub> \xrightarrow{fold^S} S \xrightarrow{encode} Mach
+</p>
+
+<ul class="org-ul">
+<li>S: Sem, die ebenfalls als &Sigma;(G)-Algebra gegebene Semantik der Quellsprache L(G)
+</li>
+<li>Mach, eine in der Regel unabh"angig von &Sigma;(G) definiertes Modell der Zielsprache, meist in der Form einer abstrakten Maschine 
+</li>
+<li>evaluate, ein Interpreter der die Zielsprache in der abstrakten Maschine Mach ausf"uhrt
+</li>
+<li>encode, eine Funktion, die Sem auf Mach abbildet und die gew"unschte Arbeitsweise des Compilers auf der semantischen Ebene ausf"uhrt
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Definition Parser</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Parser f"ur G: eine S-sortige Funktion
+</p>
+<div class="center">
+<p>
+parse<sub>G</sub>: X<sup>*</sup> &rarr; M(T<sub>&Sigma;(G)</sub>)
+</p>
+</div>
+<p>
+die entweder einen Synatxbaum f"ur das Eingabewort erzeugt oder eine Fehlermeldung zur"uck gibt. (Syntaxbaum und Fehlermeldung sind abh"anig von der Monade M)
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Funktoren und Monaden</h3>
+<div class="outline-text-3" id="text-5-2">
+</div><div id="outline-container-sec-5-2-1" class="outline-4">
+<h4 id="sec-5-2-1"><span class="section-number-4">5.2.1</span> Definition Kategorie</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<p>
+Eine Kategorie K besteht aus
+</p>
+<ul class="org-ul">
+<li>einer - ebenfalls mit K bezeichneten- Klasse von K-Objekten 
+</li>
+<li>f"ur alle A.B &isin; K einer Menge K(A,B) von K-Morphismen
+</li>
+<li>einer assoziativen Komposition 
+</li>
+</ul>
+<div class="center">
+<p>
+. : K(A,B) &times; K(B, C) &rarr; K(A,C) 
+\\ (f,g) &rarr; g . f 
+</p>
+</div>
+<ul class="org-ul">
+<li>einer Identit"at id<sub>A</sub> &isin; K(A,A), die bez"uglich . neutral ist
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2-2" class="outline-4">
+<h4 id="sec-5-2-2"><span class="section-number-4">5.2.2</span> Defintion Funktor</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<p>
+Seien K und L Kategorien. Ein Funktor F: K &rarr; L ist eine Funktion(m"ussen das wirklich Funktionen sein?), die jedem K-Objekt ein L-Objekt und jedem 
+K-Morphismus f: A &rarr; B eine L-Morphismus F(f): F(A) &rarr; F(B)  zuordnet, sowie folgende Gleichungen erf"ullt:
+</p>
+<ul class="org-ul">
+<li>F"ur alle K-Objekte A, F(id<sub>A</sub>) = id<sub>F(A)</sub>
+</li>
+<li>F"ur alle K-Morphismen f: A &rarr; B und g: B &rarr; C, F(g . f) = F(g) . F(f)
+</li>
+<li>Funktoren lassen sich wie Funktionen zu neuen Funktoren komponieren. 
+</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="sec-5-2-2-1" name="sec-5-2-2-1"></a>Beispiele<br  /><div class="outline-text-5" id="text-5-2-2-1">
+<ul class="org-ul">
+<li>Sei B &isin; L. Der konstante Funktor const(B): K &rarr; L ordnet jedem K-Objekt B und jedem K-Morphismus die Identit"at auf B zu
+</li>
+<li>Der Diagonalfunktor &Delta;<sub>K</sub>: K &rarr; K<sup>2</sup> ordnet jedem K-Objekt A das Paar (A,A) und jedem K-Morphismus f das Paar (f,f) zu
+</li>
+<li>Produktfunktor, _ &times; _ : Set<sup>2</sup> &rarr; Set ordnet jedem Mengenpaar (A,B) die Menge A &times; B und jedem Funktionspaar (f: A &rarr; B, g: C &rarr; D) die Funktion f &times; g =<sub>def</sub> &lambda;(a,c).(f(a),g(c)) zu
+</li>
+<li>Ausnahmefunktor _ + E : Set &rarr; Set ordnet jeder Menge A die Menge A + E zu und jeder Funktion f: A &rarr; B die Funktion 
+</li>
+</ul>
+<div class="center">
+<p>
+f + E: A + E &rarr; B + E <br  />
+(a, 1) &rarr; (f(a), 1) <br  />
+(e, 2) &rarr; (e, 2) <br  />
+</p>
+</div>
+</div>
+</li></ol>
+</div>
+
+<div id="outline-container-sec-5-2-3" class="outline-4">
+<h4 id="sec-5-2-3"><span class="section-number-4">5.2.3</span> Definition Nat"urliche Transformation</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<p>
+Seien F, G: K &rarr; L Funktoren. Eine nat"urliche Transformation &tau;: F &rarr; G ordnet jedem K-Objekt A einen L-Morphismus &tau;<sub>A</sub>: F(A) 
+&rarr; G(A) derart, dass f"ur alle K-Morphismen f:A &rarr; B folgendes Diagramm kommutiert 
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-08-25 Fri 05:16</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
